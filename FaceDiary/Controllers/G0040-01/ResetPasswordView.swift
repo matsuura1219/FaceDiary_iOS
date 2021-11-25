@@ -38,7 +38,7 @@ class ResetPasswordView: UIView {
         title = UILabel()
         passwordField = MyInputTextField(frame: UIScreen.main.bounds, image: UIImage(named: "password")!, title: TextConst.PASSWORD, type: .PASSWORD)
         confirmPasswordField = MyInputTextField(frame: UIScreen.main.bounds, image: UIImage(named: "password")!, title: TextConst.CONFIRM_PASSWORD, type: .PASSWORD)
-        resetButton = MyButton(frame: UIScreen.main.bounds, bkColor: ColorConst.WHITE, borderColor: ColorConst.WHITE.cgColor, title: "RESET", textColor: ColorConst.MAIN_COLOR)
+        resetButton = MyButton(frame: UIScreen.main.bounds, bkColor: ColorConst.WHITE, borderColor: ColorConst.WHITE.cgColor, title: "RESET", textColor: ColorConst.MAIN_TEXT_COLOR)
         
         super.init(frame: frame)
         

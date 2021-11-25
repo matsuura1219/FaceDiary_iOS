@@ -28,7 +28,7 @@ class RegisterView: UIView {
         // インスタンス化
         title = UILabel()
         imageView = UIImageView(image: UIImage(named: "register"))
-        yesButton = MyButton(frame: UIScreen.main.bounds, bkColor: ColorConst.WHITE, borderColor: ColorConst.MAIN_COLOR.cgColor, title: "登録", textColor: ColorConst.MAIN_COLOR)
+        yesButton = MyButton(frame: UIScreen.main.bounds, bkColor: ColorConst.WHITE, borderColor: ColorConst.MAIN_COLOR.cgColor, title: "登録", textColor: ColorConst.MAIN_TEXT_COLOR)
         noButton = MyButton(frame: UIScreen.main.bounds, bkColor: ColorConst.MAIN_COLOR, borderColor: ColorConst.WHITE.cgColor, title: "後で", textColor: ColorConst.WHITE)
         
         super.init(frame: frame)

@@ -42,7 +42,7 @@ class SignUpView: UIView {
         mailField = MyInputTextField(frame: UIScreen.main.bounds, image: UIImage(named: "user")!, title: TextConst.EMAIL, type: .EMAIL)
         passwordField = MyInputTextField(frame: UIScreen.main.bounds, image: UIImage(named: "password")!, title: TextConst.PASSWORD, type: .PASSWORD)
         confirmPasswordField = MyInputTextField(frame: UIScreen.main.bounds, image: UIImage(named: "password")!, title: TextConst.CONFIRM_PASSWORD, type: .PASSWORD)
-        registerButton = MyButton(frame: UIScreen.main.bounds, bkColor: ColorConst.WHITE, borderColor: ColorConst.WHITE.cgColor, title: "SIGN UP", textColor: ColorConst.MAIN_COLOR)
+        registerButton = MyButton(frame: UIScreen.main.bounds, bkColor: ColorConst.WHITE, borderColor: ColorConst.WHITE.cgColor, title: "SIGN UP", textColor: ColorConst.MAIN_TEXT_COLOR)
         
         super.init(frame: frame)
         

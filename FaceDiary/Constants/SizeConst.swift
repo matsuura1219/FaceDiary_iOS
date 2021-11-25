@@ -41,6 +41,8 @@ class SizeConst {
     
     // 画面の下部マージン
     static let BOTTOM_MARGIN: CGFloat = 48.0
+    // checkBoxのサイズ
+    static let CHECKBOX_SIZE: CGFloat = 30.0
     
     
 }
