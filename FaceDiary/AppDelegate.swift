@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Windowのインスタンス化
         window = UIWindow(frame: UIScreen.main.bounds)
         // 最初に起動するViewController
-        let vc = SelectFeelingViewController()
+        let vc = HomeViewController()
         // NavigationController
         let navC = UINavigationController(rootViewController: vc)
         // Windowの親ViewControllerを指定

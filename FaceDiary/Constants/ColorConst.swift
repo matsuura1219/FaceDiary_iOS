@@ -17,6 +17,8 @@ class ColorConst {
     
     // 黒（#000000）
     static let BLACK = UIColor(red: 0.141, green: 0.141, blue: 0.141, alpha: 1)
+    // 黒（#000000）
+    static let BLACK_ALPHA = UIColor(red: 0.141, green: 0.141, blue: 0.141, alpha: 0.2)
     // 白（#FFFFFF）
     static let WHITE = UIColor(red: 1.0, green: 1.0, blue: 1.00, alpha: 1)
     // 透明-白（#FFFFFF）
@@ -33,5 +35,13 @@ class ColorConst {
     static let SUB_COLOR = UIColor(red: 0.882, green: 0.882, blue: 0.882, alpha: 1)
     // サブカラー <テキスト>（#797979）
     static let SUB_TEXT_COLOR = UIColor(red: 0.475, green: 0.475, blue: 0.475, alpha: 1)
+    
+    // 赤
+    static let RED = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1)
+    // 青
+    static let BLUE = UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1)
+    // グレー（薄い）
+    static let GRAY = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+    
     
 }

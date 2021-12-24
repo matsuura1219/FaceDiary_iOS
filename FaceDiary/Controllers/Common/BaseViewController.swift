@@ -34,8 +34,6 @@ class BaseViewController: UIViewController {
         
     }
     
-  
-    
     // ナビゲーションバーの設定を行う関数でう
     func setUpNav () {
         

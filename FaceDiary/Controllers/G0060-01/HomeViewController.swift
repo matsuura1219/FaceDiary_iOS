@@ -15,7 +15,7 @@ class HomeViewController: UITabBarController {
     
     // 日付変数
     var date: String = ""
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,13 +29,15 @@ class HomeViewController: UITabBarController {
         setTabBar()
         
         // 最初に表示するタブをカレンダーに設定します
-        selectedIndex = ContentTypeEnum.CALENDAR.rawValue
+        selectedIndex = ContentTypeEnum.TIMELINE.rawValue
         
         // タイトルを設定します
         date = DateManager.getCurrentDate()
         navigationItem.title = date
         
         print(DateManager.getNextDate(date: date))
+        
+
     }
     
     
@@ -45,8 +47,10 @@ class HomeViewController: UITabBarController {
         // ナビゲーションバーの設定をします
         customizeNavColor()
         
+        
     }
     
+
     
     // ナビゲーションバーのカラーをカスタマイズする関数です
     private func customizeNavColor () {
@@ -107,6 +111,7 @@ class HomeViewController: UITabBarController {
         albumViewController.tabBarItem = UITabBarItem(title: "Album", image: UIImage(named: "album"), tag: 0)
         
         viewControllers = [timelineViewController, calendarViewController, albumViewController]
+        // viewControllers = [timelineViewController, albumViewController]
         
     }
     
@@ -179,10 +184,12 @@ class HomeViewController: UITabBarController {
     
     // 次へボタン押下時に実行される関数です
     @objc private func actionNext() {
-       
+        
         date = DateManager.getNextDate(date: date)
         self.navigationItem.title = date
         
+        // CalendarViewControllerへ通知を送る
+        NotificationCenter.default.post(name: NSNotification.Name("reload"), object: nil, userInfo: ["status": "next"])
     }
     
     // 戻るボタン押下時に実行される関数です
@@ -190,7 +197,10 @@ class HomeViewController: UITabBarController {
         
         date = DateManager.getPreviousDate(date: date)
         self.navigationItem.title = date
-
+        
+        // CalendarViewControllerへ通知を送る
+        NotificationCenter.default.post(name: NSNotification.Name("reload"), object: nil, userInfo: ["status": "back"])
+        
     }
     
     
@@ -226,5 +236,5 @@ extension HomeViewController: UITabBarControllerDelegate {
         }
         
     }
-    
+   
 }
