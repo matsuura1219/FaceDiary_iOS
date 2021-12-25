@@ -19,7 +19,6 @@ class CalendarViewController: UIViewController {
     // 1ヶ月の最大週数
     private let MAX_WEEK: Int = 6
     // 曜日ラベル
-    // private let DAY_OF_WEEK_LABEL = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sun"]
     private let DAY_OF_WEEK_LABEL = ["日", "月", "火", "水", "木", "金", "土"]
     
     // カレンダーに表示する年月
@@ -52,25 +51,8 @@ class CalendarViewController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // viewの追加
-        view.addSubview(collectionView)
-
-        
-        // 背景色の設定
-        view.backgroundColor = ColorConst.WHITE
-        
-        // 現在の年月をグローバル変数に設定します
-        year = DateManager.getCurrentYear()
-        month = DateManager.getCurrentMonth()
-        
-        
-        // delegate
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        // HomeViewControllerから通知を受け取る
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadCollectionView(notification:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
+        // 初期化を行います
+        setUp()
         
     }
     
@@ -80,6 +62,26 @@ class CalendarViewController: UIViewController {
         // frameの設定
         collectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: view.frame.height)
       
+    }
+    
+    // 初期化を行う関数です
+    private func setUp() {
+        
+        view.addSubview(collectionView)
+
+        view.backgroundColor = ColorConst.WHITE
+        
+        // 現在の年月をグローバル変数に設定します
+        year = DateManager.getCurrentYear()
+        month = DateManager.getCurrentMonth()
+        
+        // delegate
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        // HomeViewControllerから通知を受け取る
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadCollectionView(notification:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
+        
     }
     
     
@@ -115,10 +117,7 @@ class CalendarViewController: UIViewController {
         }
         
         self.collectionView.reloadData()
-        
-    
-        
-        print("リロードします")
+      
     }
     
 }
@@ -190,7 +189,6 @@ extension CalendarViewController: UICollectionViewDataSource {
                 
             }
             
-            
         }
         
         return cell
@@ -199,7 +197,6 @@ extension CalendarViewController: UICollectionViewDataSource {
 }
 
 
-//cellのサイズの設定
 extension CalendarViewController: UICollectionViewDelegateFlowLayout {
     
     // cellのサイズを設定します
@@ -211,7 +208,6 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.frame.width / 7.0, height: collectionView.frame.width / 7.0)
             
         } else {
-            
             // 日付欄
             return CGSize(width: collectionView.frame.width / 7.0, height: collectionView.frame.width / 7.0)
             

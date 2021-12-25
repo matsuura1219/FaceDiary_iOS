@@ -9,14 +9,10 @@
 /* Begin PBXBuildFile section */
 		D2133E40276F6AD5001E351C /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2133E3F276F6AD5001E351C /* TimelineCell.swift */; };
 		D21FDA7C274484E300A9E845 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21FDA7B274484E300A9E845 /* LoginViewController.swift */; };
-		D21FDA84274484F500A9E845 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21FDA83274484F500A9E845 /* LoginView.swift */; };
 		D21FDA8A2744851700A9E845 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21FDA892744851700A9E845 /* SignUpViewController.swift */; };
-		D21FDA922744852700A9E845 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21FDA912744852700A9E845 /* SignUpView.swift */; };
 		D21FDA982744854000A9E845 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21FDA972744854000A9E845 /* ResetPasswordViewController.swift */; };
-		D21FDAA02744855400A9E845 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21FDA9F2744855400A9E845 /* ResetPasswordView.swift */; };
-		D21FDAB72744868700A9E845 /* MyInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21FDAB62744868700A9E845 /* MyInputTextField.swift */; };
-		D21FDABC2744871700A9E845 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21FDABB2744871700A9E845 /* MyButton.swift */; };
-		D22981CF274FCC6800121A39 /* MonthDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22981CE274FCC6800121A39 /* MonthDateManager.swift */; };
+		D21FDAB72744868700A9E845 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21FDAB62744868700A9E845 /* InputTextField.swift */; };
+		D21FDABC2744871700A9E845 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21FDABB2744871700A9E845 /* CustomButton.swift */; };
 		D22981E1274FE60D00121A39 /* DateItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22981E0274FE60D00121A39 /* DateItems.swift */; };
 		D231A1452742A631002A19B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D231A1442742A631002A19B9 /* AppDelegate.swift */; };
 		D231A14E2742A634002A19B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D231A14D2742A634002A19B9 /* Assets.xcassets */; };
@@ -24,9 +20,8 @@
 		D231A1672742A635002A19B9 /* FaceDiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D231A1662742A635002A19B9 /* FaceDiaryUITests.swift */; };
 		D231A1832742A80A002A19B9 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D231A1822742A80A002A19B9 /* TopViewController.swift */; };
 		D231A1962742A9E8002A19B9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D231A1952742A9E8002A19B9 /* BaseViewController.swift */; };
-		D231A19C2742AAA0002A19B9 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D231A19B2742AAA0002A19B9 /* TopView.swift */; };
 		D231A1A22742AB3C002A19B9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D231A1A12742AB3C002A19B9 /* HomeViewController.swift */; };
-		D231A1A72742AB4E002A19B9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D231A1A62742AB4E002A19B9 /* HomeView.swift */; };
+		D23993FE2777204A00C3AC97 /* Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23993FD2777204A00C3AC97 /* Extenstions.swift */; };
 		D244535D275A345000743E4B /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D244535C275A345000743E4B /* CalendarCell.swift */; };
 		D25B5EDE274E77BC00931F3B /* MyCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25B5EDD274E77BB00931F3B /* MyCheckBox.swift */; };
 		D25B5EE3274E7A3400931F3B /* FeelingTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25B5EE2274E7A3400931F3B /* FeelingTypeEnum.swift */; };
@@ -36,14 +31,12 @@
 		D26A41B22743696A00C77A5A /* TextConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26A41B12743696A00C77A5A /* TextConst.swift */; };
 		D26A41B727436A1400C77A5A /* SizeConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26A41B627436A1400C77A5A /* SizeConst.swift */; };
 		D26A41C027437AEA00C77A5A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26A41BF27437AEA00C77A5A /* RegisterViewController.swift */; };
-		D26A41C827437B0000C77A5A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26A41C727437B0000C77A5A /* RegisterView.swift */; };
 		D26C280E2775F56200FAF60A /* AlbumCelll.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C280D2775F56200FAF60A /* AlbumCelll.swift */; };
 		D279399F27490C23000F817E /* ClickTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D279399E27490C23000F817E /* ClickTypeEnum.swift */; };
 		D27939A427490EE0000F817E /* TappedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27939A327490EE0000F817E /* TappedDelegate.swift */; };
 		D2B5C1DC2774B6E1006255D0 /* TimelineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C1DB2774B6E1006255D0 /* TimelineHeaderView.swift */; };
 		D2C88F02275B5A6300D462F6 /* YoubiEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C88F01275B5A6300D462F6 /* YoubiEnum.swift */; };
 		D2D7F2E0274BE07400EE35D8 /* SelectFeelingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D7F2DF274BE07400EE35D8 /* SelectFeelingViewController.swift */; };
-		D2D7F2E5274BE08700EE35D8 /* SelectFeelingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D7F2E4274BE08700EE35D8 /* SelectFeelingView.swift */; };
 		D2D7F2EC274BE18500EE35D8 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D7F2EB274BE18500EE35D8 /* TimelineViewController.swift */; };
 		D2D7F2F1274BE19200EE35D8 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D7F2F0274BE19200EE35D8 /* AlbumViewController.swift */; };
 		D2D7F305274BE49900EE35D8 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D7F304274BE49900EE35D8 /* CalendarViewController.swift */; };
@@ -71,14 +64,10 @@
 /* Begin PBXFileReference section */
 		D2133E3F276F6AD5001E351C /* TimelineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
 		D21FDA7B274484E300A9E845 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		D21FDA83274484F500A9E845 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D21FDA892744851700A9E845 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		D21FDA912744852700A9E845 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		D21FDA972744854000A9E845 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
-		D21FDA9F2744855400A9E845 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
-		D21FDAB62744868700A9E845 /* MyInputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInputTextField.swift; sourceTree = "<group>"; };
-		D21FDABB2744871700A9E845 /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
-		D22981CE274FCC6800121A39 /* MonthDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthDateManager.swift; sourceTree = "<group>"; };
+		D21FDAB62744868700A9E845 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
+		D21FDABB2744871700A9E845 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D22981E0274FE60D00121A39 /* DateItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateItems.swift; sourceTree = "<group>"; };
 		D231A1412742A631002A19B9 /* FaceDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D231A1442742A631002A19B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,9 +81,8 @@
 		D231A1682742A635002A19B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D231A1822742A80A002A19B9 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		D231A1952742A9E8002A19B9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		D231A19B2742AAA0002A19B9 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		D231A1A12742AB3C002A19B9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		D231A1A62742AB4E002A19B9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D23993FD2777204A00C3AC97 /* Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extenstions.swift; sourceTree = "<group>"; };
 		D244535C275A345000743E4B /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		D25B5EDD274E77BB00931F3B /* MyCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCheckBox.swift; sourceTree = "<group>"; };
 		D25B5EE2274E7A3400931F3B /* FeelingTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingTypeEnum.swift; sourceTree = "<group>"; };
@@ -104,14 +92,12 @@
 		D26A41B12743696A00C77A5A /* TextConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConst.swift; sourceTree = "<group>"; };
 		D26A41B627436A1400C77A5A /* SizeConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeConst.swift; sourceTree = "<group>"; };
 		D26A41BF27437AEA00C77A5A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		D26A41C727437B0000C77A5A /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		D26C280D2775F56200FAF60A /* AlbumCelll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCelll.swift; sourceTree = "<group>"; };
 		D279399E27490C23000F817E /* ClickTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickTypeEnum.swift; sourceTree = "<group>"; };
 		D27939A327490EE0000F817E /* TappedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappedDelegate.swift; sourceTree = "<group>"; };
 		D2B5C1DB2774B6E1006255D0 /* TimelineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineHeaderView.swift; sourceTree = "<group>"; };
 		D2C88F01275B5A6300D462F6 /* YoubiEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoubiEnum.swift; sourceTree = "<group>"; };
 		D2D7F2DF274BE07400EE35D8 /* SelectFeelingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFeelingViewController.swift; sourceTree = "<group>"; };
-		D2D7F2E4274BE08700EE35D8 /* SelectFeelingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFeelingView.swift; sourceTree = "<group>"; };
 		D2D7F2EB274BE18500EE35D8 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		D2D7F2F0274BE19200EE35D8 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		D2D7F304274BE49900EE35D8 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -144,31 +130,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D21FDA7A274484C900A9E845 /* G0020-01 */ = {
+		D21FDA7A274484C900A9E845 /* G0020 */ = {
 			isa = PBXGroup;
 			children = (
 				D21FDA7B274484E300A9E845 /* LoginViewController.swift */,
-				D21FDA83274484F500A9E845 /* LoginView.swift */,
 			);
-			path = "G0020-01";
+			path = G0020;
 			sourceTree = "<group>";
 		};
-		D21FDA88274484FD00A9E845 /* G0030-01 */ = {
+		D21FDA88274484FD00A9E845 /* G0030 */ = {
 			isa = PBXGroup;
 			children = (
 				D21FDA892744851700A9E845 /* SignUpViewController.swift */,
-				D21FDA912744852700A9E845 /* SignUpView.swift */,
 			);
-			path = "G0030-01";
+			path = G0030;
 			sourceTree = "<group>";
 		};
-		D21FDA962744852E00A9E845 /* G0040-01 */ = {
+		D21FDA962744852E00A9E845 /* G0040 */ = {
 			isa = PBXGroup;
 			children = (
 				D21FDA972744854000A9E845 /* ResetPasswordViewController.swift */,
-				D21FDA9F2744855400A9E845 /* ResetPasswordView.swift */,
 			);
-			path = "G0040-01";
+			path = G0040;
 			sourceTree = "<group>";
 		};
 		D22981DF274FE5FA00121A39 /* Model */ = {
@@ -202,6 +185,7 @@
 		D231A1432742A631002A19B9 /* FaceDiary */ = {
 			isa = PBXGroup;
 			children = (
+				D23993FC2777200900C3AC97 /* Extenstions */,
 				D22981DF274FE5FA00121A39 /* Model */,
 				D267A00E2746730F00454D8C /* Enums */,
 				D26A41A6274367F500C77A5A /* Constants */,
@@ -239,16 +223,16 @@
 			isa = PBXGroup;
 			children = (
 				D231A1942742A9D8002A19B9 /* Common */,
-				D231A19A2742AA84002A19B9 /* G0010-01 */,
-				D21FDA7A274484C900A9E845 /* G0020-01 */,
-				D21FDA88274484FD00A9E845 /* G0030-01 */,
-				D21FDA962744852E00A9E845 /* G0040-01 */,
-				D26A41BE27437AB100C77A5A /* G0050-01 */,
-				D231A1A02742AB26002A19B9 /* G0060-01 */,
-				D2D7F2DE274BE05500EE35D8 /* G0070-01 */,
-				D2D7F2E9274BE15D00EE35D8 /* G0080-01 */,
-				D2D7F2EA274BE16A00EE35D8 /* G0090-01 */,
-				D2D7F2F8274BE41300EE35D8 /* G0100-01 */,
+				D231A19A2742AA84002A19B9 /* G0010 */,
+				D21FDA7A274484C900A9E845 /* G0020 */,
+				D21FDA88274484FD00A9E845 /* G0030 */,
+				D21FDA962744852E00A9E845 /* G0040 */,
+				D26A41BE27437AB100C77A5A /* G0050 */,
+				D2D7F2DE274BE05500EE35D8 /* G0060 */,
+				D231A1A02742AB26002A19B9 /* G0070 */,
+				D2D7F2E9274BE15D00EE35D8 /* G0080 */,
+				D2D7F2EA274BE16A00EE35D8 /* G0090 */,
+				D2D7F2F8274BE41300EE35D8 /* G0100 */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -257,7 +241,6 @@
 			isa = PBXGroup;
 			children = (
 				D2FF8930274C94D2002FC991 /* DateManager.swift */,
-				D22981CE274FCC6800121A39 /* MonthDateManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -272,8 +255,8 @@
 		D231A1802742A7D9002A19B9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D21FDAB62744868700A9E845 /* MyInputTextField.swift */,
-				D21FDABB2744871700A9E845 /* MyButton.swift */,
+				D21FDAB62744868700A9E845 /* InputTextField.swift */,
+				D21FDABB2744871700A9E845 /* CustomButton.swift */,
 				D25B5EDD274E77BB00931F3B /* MyCheckBox.swift */,
 				D25B5EE2274E7A3400931F3B /* FeelingTypeEnum.swift */,
 			);
@@ -304,22 +287,28 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		D231A19A2742AA84002A19B9 /* G0010-01 */ = {
+		D231A19A2742AA84002A19B9 /* G0010 */ = {
 			isa = PBXGroup;
 			children = (
 				D231A1822742A80A002A19B9 /* TopViewController.swift */,
-				D231A19B2742AAA0002A19B9 /* TopView.swift */,
 			);
-			path = "G0010-01";
+			path = G0010;
 			sourceTree = "<group>";
 		};
-		D231A1A02742AB26002A19B9 /* G0060-01 */ = {
+		D231A1A02742AB26002A19B9 /* G0070 */ = {
 			isa = PBXGroup;
 			children = (
 				D231A1A12742AB3C002A19B9 /* HomeViewController.swift */,
-				D231A1A62742AB4E002A19B9 /* HomeView.swift */,
 			);
-			path = "G0060-01";
+			path = G0070;
+			sourceTree = "<group>";
+		};
+		D23993FC2777200900C3AC97 /* Extenstions */ = {
+			isa = PBXGroup;
+			children = (
+				D23993FD2777204A00C3AC97 /* Extenstions.swift */,
+			);
+			path = Extenstions;
 			sourceTree = "<group>";
 		};
 		D267A00E2746730F00454D8C /* Enums */ = {
@@ -344,50 +333,48 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		D26A41BE27437AB100C77A5A /* G0050-01 */ = {
+		D26A41BE27437AB100C77A5A /* G0050 */ = {
 			isa = PBXGroup;
 			children = (
 				D26A41BF27437AEA00C77A5A /* RegisterViewController.swift */,
-				D26A41C727437B0000C77A5A /* RegisterView.swift */,
 			);
-			path = "G0050-01";
+			path = G0050;
 			sourceTree = "<group>";
 		};
-		D2D7F2DE274BE05500EE35D8 /* G0070-01 */ = {
+		D2D7F2DE274BE05500EE35D8 /* G0060 */ = {
 			isa = PBXGroup;
 			children = (
 				D2D7F2DF274BE07400EE35D8 /* SelectFeelingViewController.swift */,
-				D2D7F2E4274BE08700EE35D8 /* SelectFeelingView.swift */,
 			);
-			path = "G0070-01";
+			path = G0060;
 			sourceTree = "<group>";
 		};
-		D2D7F2E9274BE15D00EE35D8 /* G0080-01 */ = {
+		D2D7F2E9274BE15D00EE35D8 /* G0080 */ = {
 			isa = PBXGroup;
 			children = (
 				D2D7F2EB274BE18500EE35D8 /* TimelineViewController.swift */,
 				D2133E3F276F6AD5001E351C /* TimelineCell.swift */,
 				D2B5C1DB2774B6E1006255D0 /* TimelineHeaderView.swift */,
 			);
-			path = "G0080-01";
+			path = G0080;
 			sourceTree = "<group>";
 		};
-		D2D7F2EA274BE16A00EE35D8 /* G0090-01 */ = {
+		D2D7F2EA274BE16A00EE35D8 /* G0090 */ = {
 			isa = PBXGroup;
 			children = (
 				D2D7F2F0274BE19200EE35D8 /* AlbumViewController.swift */,
 				D26C280D2775F56200FAF60A /* AlbumCelll.swift */,
 			);
-			path = "G0090-01";
+			path = G0090;
 			sourceTree = "<group>";
 		};
-		D2D7F2F8274BE41300EE35D8 /* G0100-01 */ = {
+		D2D7F2F8274BE41300EE35D8 /* G0100 */ = {
 			isa = PBXGroup;
 			children = (
 				D2D7F304274BE49900EE35D8 /* CalendarViewController.swift */,
 				D244535C275A345000743E4B /* CalendarCell.swift */,
 			);
-			path = "G0100-01";
+			path = G0100;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -524,30 +511,23 @@
 				D21FDA982744854000A9E845 /* ResetPasswordViewController.swift in Sources */,
 				D2D7F2F1274BE19200EE35D8 /* AlbumViewController.swift in Sources */,
 				D2FF8921274C8EF5002FC991 /* ContentTypeEnum.swift in Sources */,
-				D21FDAA02744855400A9E845 /* ResetPasswordView.swift in Sources */,
-				D21FDAB72744868700A9E845 /* MyInputTextField.swift in Sources */,
+				D21FDAB72744868700A9E845 /* InputTextField.swift in Sources */,
 				D231A1A22742AB3C002A19B9 /* HomeViewController.swift in Sources */,
 				D26A41B727436A1400C77A5A /* SizeConst.swift in Sources */,
-				D21FDABC2744871700A9E845 /* MyButton.swift in Sources */,
+				D21FDABC2744871700A9E845 /* CustomButton.swift in Sources */,
 				D2C88F02275B5A6300D462F6 /* YoubiEnum.swift in Sources */,
 				D231A1832742A80A002A19B9 /* TopViewController.swift in Sources */,
 				D2D7F2EC274BE18500EE35D8 /* TimelineViewController.swift in Sources */,
 				D27939A427490EE0000F817E /* TappedDelegate.swift in Sources */,
 				D2D7F305274BE49900EE35D8 /* CalendarViewController.swift in Sources */,
+				D23993FE2777204A00C3AC97 /* Extenstions.swift in Sources */,
 				D231A1452742A631002A19B9 /* AppDelegate.swift in Sources */,
-				D231A1A72742AB4E002A19B9 /* HomeView.swift in Sources */,
-				D231A19C2742AAA0002A19B9 /* TopView.swift in Sources */,
-				D21FDA84274484F500A9E845 /* LoginView.swift in Sources */,
 				D267A0102746732100454D8C /* TextTypeEnum.swift in Sources */,
-				D2D7F2E5274BE08700EE35D8 /* SelectFeelingView.swift in Sources */,
 				D2B5C1DC2774B6E1006255D0 /* TimelineHeaderView.swift in Sources */,
-				D22981CF274FCC6800121A39 /* MonthDateManager.swift in Sources */,
 				D2D7F2E0274BE07400EE35D8 /* SelectFeelingViewController.swift in Sources */,
 				D21FDA8A2744851700A9E845 /* SignUpViewController.swift in Sources */,
 				D25B5EDE274E77BC00931F3B /* MyCheckBox.swift in Sources */,
 				D231A1962742A9E8002A19B9 /* BaseViewController.swift in Sources */,
-				D26A41C827437B0000C77A5A /* RegisterView.swift in Sources */,
-				D21FDA922744852700A9E845 /* SignUpView.swift in Sources */,
 				D26A41A82743680C00C77A5A /* ColorConst.swift in Sources */,
 				D26C280E2775F56200FAF60A /* AlbumCelll.swift in Sources */,
 				D22981E1274FE60D00121A39 /* DateItems.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  MyButton.swift
+//  CustomButton.swift
 //  FaceDiary
 //
 //  Created by 松浦裕久 on 2021/11/17.
@@ -11,14 +11,14 @@ import UIKit
  カスタムボタンのViewクラスです
  */
 
-class MyButton: UIButton {
+class CustomButton: UIButton {
     
     // イニシアライザ
     init (frame: CGRect, bkColor: UIColor, borderColor: CGColor, title: String, textColor: UIColor) {
         
         super.init(frame: frame)
         
-        setMyButton(bkColor: bkColor, borderColor: borderColor, title: title, textColor: textColor)
+        setCustomButton(bkColor: bkColor, borderColor: borderColor, title: title, textColor: textColor)
         
     }
     
@@ -33,7 +33,7 @@ class MyButton: UIButton {
     }
     
     // カスタムボタンの設定を行う関数です
-    private func setMyButton (bkColor: UIColor, borderColor: CGColor, title: String, textColor: UIColor) {
+    private func setCustomButton (bkColor: UIColor, borderColor: CGColor, title: String, textColor: UIColor) {
         // 角丸に設定
         self.layer.cornerRadius = 10.0
         // 背景色

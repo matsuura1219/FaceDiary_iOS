@@ -140,7 +140,6 @@ class TimelineCell: UITableViewCell {
         thinkLevel.frame = CGRect(x: backView.frame.width * 0.35, y: 50, width: backView.frame.width * 0.25, height: 80)
         imgLabel.frame = CGRect(x: backView.frame.width * 0.65, y: 0, width: backView.frame.width * 0.35, height: 50)
         imgView.frame = CGRect(x: backView.frame.width * 0.7, y: 50, width: backView.frame.width * 0.25, height: 80)
-    
 
     }
     

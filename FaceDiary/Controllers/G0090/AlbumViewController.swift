@@ -34,20 +34,24 @@ class AlbumViewController: UIViewController {
         
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // viewの追加
+        // 初期化を行います
+        setUp()
+
+    }
+    
+    // 初期化を行う関数です
+    private func setUp() {
+
         view.addSubview(collectionView)
         
         // delegate
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        
-        
         collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Section")
-
         
     }
     
@@ -73,10 +77,7 @@ extension AlbumViewController: UICollectionViewDataSource {
         return cell
     }
     
-    
-    /*
-     Sectionに値を設定する
-     */
+    // Sectionに値を設定する
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Section", for: indexPath)
@@ -88,10 +89,9 @@ extension AlbumViewController: UICollectionViewDataSource {
         headerView.backgroundColor = .clear
         label.backgroundColor = ColorConst.SUB_COLOR
         headerView.addSubview(label)
-        
         return headerView
+        
     }
-    
     
 }
 
@@ -101,9 +101,7 @@ extension AlbumViewController: UICollectionViewDelegateFlowLayout {
     
     // cellのサイズを設定します
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //ここでは画面の横サイズの半分の大きさのcellサイズを指定
         
-        // 日付欄
         return CGSize(width: collectionView.frame.width / 4.0, height: collectionView.frame.width / 4.0)
         
     }

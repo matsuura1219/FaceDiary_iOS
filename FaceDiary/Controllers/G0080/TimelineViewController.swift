@@ -23,17 +23,8 @@ class TimelineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // viewの追加
-        view.addSubview(tableView)
-        
-        // delegate
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        // セルの登録をします
-        tableView.register(TimelineCell.self, forCellReuseIdentifier: "TimelineCell")
-        // tableView.register(TimelineHeaderView.self, forHeaderFooterViewReuseIdentifier: String(describing: TimelineHeaderView.self))
+        // 初期化を行います
+        setUp()
     }
     
     override func viewDidLayoutSubviews() {
@@ -42,46 +33,49 @@ class TimelineViewController: UIViewController {
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 400)
     }
     
+    // 初期化を行う関数です
+    private func setUp() {
+
+        view.addSubview(tableView)
+        
+        // delegate
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        // セルの登録をします
+        tableView.register(TimelineCell.self, forCellReuseIdentifier: "TimelineCell")
+        
+    }
+    
     
 }
 
 extension TimelineViewController: UITableViewDataSource {
     
-    /*
-     1section内のセルの合計値を設定します
-     */
+    // 1section内のセルの合計値を設定します
+     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
     
-    
-    /*
-     セクションの数を返す.
-     */
+    // セクションの数を返す
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    
-    
-    /*
-     cellの設定を行います
-     */
+    //cellの設定を行います
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineCell", for: indexPath) as! TimelineCell
         return cell
     }
     
-    
-    /*
-     cellの高さを設定します
-     */
+    // cellの高さを設定します
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180.0
     }
     
-    // Section Header View
+    // Sectionのカスタマイズを行います
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         // HeaderのViewを作成してViewを返す
         let headerView = UIView()
@@ -95,11 +89,10 @@ extension TimelineViewController: UITableViewDataSource {
         return headerView
     }
     
+    // sectionの高さを設定します
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
-    
-    
     
 }
 
@@ -115,4 +108,5 @@ extension TimelineViewController: UITableViewDelegate {
             scrollView.contentInset = UIEdgeInsets(top: -sectionHeaderHeight, left: 0, bottom: 0, right: 0);
         }
     }
+    
 }

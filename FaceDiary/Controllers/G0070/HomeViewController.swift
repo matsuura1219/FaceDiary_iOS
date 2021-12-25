@@ -7,10 +7,8 @@
 
 import UIKit
 
-/**
- ホーム画面を表示するためのViewControllerです
- */
-
+// ホーム画面を表示するためのViewControllerです
+ 
 class HomeViewController: UITabBarController {
     
     // 日付変数
@@ -18,26 +16,9 @@ class HomeViewController: UITabBarController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // 背景色を設定します
-        self.view.backgroundColor = ColorConst.WHITE
-        
-        // delegateを設定します
-        self.delegate = self
-        
-        // タブの設定をします
-        setTabBar()
-        
-        // 最初に表示するタブをカレンダーに設定します
-        selectedIndex = ContentTypeEnum.TIMELINE.rawValue
-        
-        // タイトルを設定します
-        date = DateManager.getCurrentDate()
-        navigationItem.title = date
-        
-        print(DateManager.getNextDate(date: date))
-        
-
+        // 初期化を行います
+        setUp()
+    
     }
     
     
@@ -47,9 +28,25 @@ class HomeViewController: UITabBarController {
         // ナビゲーションバーの設定をします
         customizeNavColor()
         
-        
     }
     
+    // 初期化を行う関数です
+    private func setUp() {
+        
+        self.view.backgroundColor = ColorConst.WHITE
+        self.navigationItem.hidesBackButton = true
+        
+        // delegate
+        delegate = self
+        // タブの設定を行います
+        setTabBar()
+        // 最初に表示するタブをカレンダーに設定します
+        selectedIndex = ContentTypeEnum.CALENDAR.rawValue
+        // タイトルを設定します
+        date = DateManager.getCurrentDate()
+        navigationItem.title = date
+        
+    }
 
     
     // ナビゲーションバーのカラーをカスタマイズする関数です
@@ -111,12 +108,11 @@ class HomeViewController: UITabBarController {
         albumViewController.tabBarItem = UITabBarItem(title: "Album", image: UIImage(named: "album"), tag: 0)
         
         viewControllers = [timelineViewController, calendarViewController, albumViewController]
-        // viewControllers = [timelineViewController, albumViewController]
         
     }
     
     // ヘッダーのタイトルを設定する関数です
-    func setTitle (type: ContentTypeEnum) {
+    private func setTitle (type: ContentTypeEnum) {
         
         var title: String = ""
         
@@ -124,12 +120,12 @@ class HomeViewController: UITabBarController {
         
         case .TIMELINE:
             // タイムラインタブの場合
-            title = "タイムライン"
+            title = TextConst.G0080_TITLE
             break
             
         case .ALBUM:
             // アルバムタブの場合
-            title = "アルバム"
+            title = TextConst.G0090_TITLE
             break
             
         case .CALENDAR:
@@ -144,8 +140,7 @@ class HomeViewController: UITabBarController {
         
     }
     
-    
-    
+
     // コンテンツに応じて、ヘッダー上のボタンを表示させるかどうか決定する関数です
     private func showNavItem (type: ContentTypeEnum) {
         
@@ -170,13 +165,11 @@ class HomeViewController: UITabBarController {
                 )
             }
             
-            
-            
-            
         } else {
             // それ以外の場合
             self.navigationItem.leftBarButtonItem = nil
             self.navigationItem.rightBarButtonItem = nil
+            
         }
         
     }
@@ -191,6 +184,7 @@ class HomeViewController: UITabBarController {
         // CalendarViewControllerへ通知を送る
         NotificationCenter.default.post(name: NSNotification.Name("reload"), object: nil, userInfo: ["status": "next"])
     }
+    
     
     // 戻るボタン押下時に実行される関数です
     @objc private func actionBack() {

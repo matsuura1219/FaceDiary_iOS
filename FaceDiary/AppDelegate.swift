@@ -15,12 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        print("起動しました")
-        
         // Windowのインスタンス化
         window = UIWindow(frame: UIScreen.main.bounds)
         // 最初に起動するViewController
-        let vc = HomeViewController()
+        let vc = TopViewController()
         // NavigationController
         let navC = UINavigationController(rootViewController: vc)
         // Windowの親ViewControllerを指定

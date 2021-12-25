@@ -8,11 +8,9 @@
 import UIKit
 
 
-/**
- メールアドレス、パスワードを入力するカスタムテキストフィールドのViewクラスです
- */
+// メールアドレス、パスワードを入力するカスタムテキストフィールドのViewクラスです
 
-class MyInputTextField: UITextField {
+class InputTextField: UITextField {
     
     // 変数
     private var imageView: UIImageView
