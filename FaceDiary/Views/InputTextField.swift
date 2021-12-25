@@ -61,15 +61,18 @@ class InputTextField: UITextField {
         self.backgroundColor = ColorConst.WHITE
         // 文字の色
         self.textColor = ColorConst.MAIN_TEXT_COLOR
+        // キーボードのデフォルトを大文字にしない
+        autocapitalizationType = .none
         // 左に画像を挿入
         self.leftView = imageView
         self.leftViewMode = .always
         // キーボードの設定
         if (type == .EMAIL) {
-            self.keyboardType = .default
+            self.keyboardType = .emailAddress
             
         } else if (type == .PASSWORD) {
-            self.keyboardType = .default
+            self.keyboardType = .emailAddress
+            isSecureTextEntry = true
             
         }
     }

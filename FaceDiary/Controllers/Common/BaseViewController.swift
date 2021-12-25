@@ -111,6 +111,40 @@ class BaseViewController: UIViewController {
         return ""
     }
     
+    // Emailのチェック用関数です
+    func checkEmail(text: String?) -> Bool {
+        
+        guard let email = text else {
+            return false
+        }
+        
+        if email.count < 8 {
+            return false
+        }
+        
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+        
+        if NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email) {
+            return true
+        }
+        
+        return false
+    }
+    
+    // Passwordのチェック用関数です
+    func checkPassword(text: String?) -> Bool {
+        
+        guard let password = text else {
+            return false
+        }
+        
+        if password.count >= 8 {
+            return true
+        }
+        
+        return false
+    }
+    
     
     // SETTER
     

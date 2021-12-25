@@ -53,6 +53,41 @@ class SignUpViewController: BaseViewController {
         
     }()
     
+    private lazy var errorEmailLabel: UILabel = {
+        
+        let label = UILabel()
+        label.textColor = ColorConst.RED
+        label.font = FontSizeConst.SMALL_SIZE
+        label.text = TextConst.MAIL_CHECK_NG
+        label.numberOfLines = 0;
+        label.sizeToFit()
+        return label
+        
+    }()
+    
+    private lazy var errorPasswordLabel: UILabel = {
+        
+        let label = UILabel()
+        label.textColor = ColorConst.RED
+        label.font = FontSizeConst.SMALL_SIZE
+        label.text = TextConst.PASSWORD_CHECK_NG
+        label.numberOfLines = 0;
+        label.sizeToFit()
+        return label
+        
+    }()
+    
+    private lazy var errorRePasswordLabel: UILabel = {
+        
+        let label = UILabel()
+        label.textColor = ColorConst.RED
+        label.font = FontSizeConst.SMALL_SIZE
+        label.text = TextConst.PASSWORD_CHECK_NG
+        label.numberOfLines = 0;
+        label.sizeToFit()
+        return label
+        
+    }()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +129,13 @@ class SignUpViewController: BaseViewController {
         view.addSubview(pwField)
         view.addSubview(rePwField)
         view.addSubview(registerButton)
+        view.addSubview(errorEmailLabel)
+        view.addSubview(errorPasswordLabel)
+        view.addSubview(errorRePasswordLabel)
+        
+        errorEmailLabel.isHidden = true
+        errorPasswordLabel.isHidden = true
+        errorRePasswordLabel.isHidden = true
     
         
         let tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -106,15 +148,22 @@ class SignUpViewController: BaseViewController {
     private func setLayout() {
         
         let top = getScreenHeight() * 0.15 - getNavBarHeight() - getSafeAreaTop()
-
+        
+      
         // タイトル
         titleLabel.frame = CGRect(x: 0, y: top, width: getScreenWidth(), height: titleLabel.frame.height)
         // メールアドレス入力
         mailField.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: titleLabel.frame.origin.y + titleLabel.frame.height + SizeConst.XX_LARGE_MARGIN, width: UIScreen.main.bounds.width - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TEXT_FIELD_HEIGHT)
+        // ERROR用ラベル
+        errorEmailLabel.frame = CGRect(x: SizeConst.SIDE_MARGIN * 2, y: mailField.frame.origin.y + mailField.frame.height + SizeConst.SMALL_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: errorEmailLabel.frame.height)
         // パスワード入力
-        pwField.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: mailField.frame.origin.y + mailField.frame.height + SizeConst.XX_LARGE_MARGIN, width: UIScreen.main.bounds.width - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TEXT_FIELD_HEIGHT)
+        pwField.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: errorEmailLabel.frame.origin.y + errorEmailLabel.frame.height + SizeConst.LARGE_MARGIN, width: UIScreen.main.bounds.width - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TEXT_FIELD_HEIGHT)
+        // ERROR用ラベル
+        errorPasswordLabel.frame = CGRect(x: SizeConst.SIDE_MARGIN * 2, y: pwField.frame.origin.y + pwField.frame.height + SizeConst.SMALL_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: errorPasswordLabel.frame.height)
         // パスワード確認用入力
-        rePwField.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: pwField.frame.origin.y + pwField.frame.height + SizeConst.XX_LARGE_MARGIN, width: UIScreen.main.bounds.width - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TEXT_FIELD_HEIGHT)
+        rePwField.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: errorPasswordLabel.frame.origin.y + errorPasswordLabel.frame.height + SizeConst.LARGE_MARGIN, width: UIScreen.main.bounds.width - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TEXT_FIELD_HEIGHT)
+        // ERROR用ラベル
+        errorRePasswordLabel.frame = CGRect(x: SizeConst.SIDE_MARGIN * 2, y: rePwField.frame.origin.y + rePwField.frame.height + SizeConst.SMALL_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: errorRePasswordLabel.frame.height)
         
         let yPosition = getScreenHeight() - getSafeAreaBottom() - SizeConst.BOTTOM_MARGIN - SizeConst.BUTTON_HEIGHT - SizeConst.LARGE_MARGIN -  getNavBarHeight() - getSafeAreaTop()
         
@@ -130,8 +179,50 @@ class SignUpViewController: BaseViewController {
     
     // 登録ボタンを押下した際に実行される関数です
     @objc private func pushRegisterButton() {
-        let vc = HomeViewController()
-        navigationController?.pushViewController(vc, animated: true)
+    
+        var flag: Bool = true
+        
+        if checkEmail(text: mailField.text) {
+            // 入力したメールチェックOKの場合
+            errorEmailLabel.isHidden = true
+            
+        } else {
+            // 入力したメールチェックNGの場合
+            errorEmailLabel.isHidden = false
+            flag = false
+        }
+        
+        if checkPassword(text: pwField.text) {
+            // 入力したパスワードチェックの場合
+            errorPasswordLabel.isHidden = true
+            
+        } else {
+            // 入力したパスワードチェックNGの場合
+            errorPasswordLabel.isHidden = false
+            flag = false
+        }
+        
+        if checkPassword(text: rePwField.text) {
+            // 入力したパスワードチェックの場合
+            errorRePasswordLabel.isHidden = true
+            
+        } else {
+            // 入力したパスワードチェックNGの場合
+            errorRePasswordLabel.isHidden = false
+            flag = false
+        }
+        
+        if flag == true {
+            
+            errorEmailLabel.isHidden = true
+            errorPasswordLabel.isHidden = true
+            errorRePasswordLabel.isHidden = true
+            
+            let vc = HomeViewController()
+            navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        
     }
 
 }

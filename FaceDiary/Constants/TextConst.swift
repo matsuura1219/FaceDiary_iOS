@@ -31,6 +31,7 @@ class TextConst {
     static let PASSWORD_PLACEHOLDER: String = "Password"
     // パスワード確認用(テキストフィールド)
     static let CONFIRM_PASSWORD_PLACEHOLDER: String = "Confirm Password"
+
     
     
     // G0010-01
@@ -76,6 +77,11 @@ class TextConst {
     // G0090
     // タイトル
     static let G0090_TITLE: String = "アルバム"
+    
+    
+    // ERROR
+    static let MAIL_CHECK_NG: String = "正しいメールアドレスを入力してください"
+    static let PASSWORD_CHECK_NG = "英数字8文字以上を入力してください"
 
 
 }

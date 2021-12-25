@@ -25,6 +25,13 @@ class ResetPasswordViewController: BaseViewController {
         
     }()
     
+    private lazy var mailField: InputTextField = {
+        
+        let field = InputTextField(frame: .zero, image: UIImage(named: "user")!, title: TextConst.EMAIL_PLACEHOLDER, type: .EMAIL)
+        return field
+        
+    }()
+    
     private lazy var pwField: InputTextField = {
         
         let field = InputTextField(frame: .zero, image: UIImage(named: "password")!, title: TextConst.PASSWORD_PLACEHOLDER, type: .PASSWORD)
@@ -47,6 +54,41 @@ class ResetPasswordViewController: BaseViewController {
         
     }()
     
+    private lazy var errorEmailLabel: UILabel = {
+        
+        let label = UILabel()
+        label.textColor = ColorConst.RED
+        label.font = FontSizeConst.SMALL_SIZE
+        label.text = TextConst.MAIL_CHECK_NG
+        label.numberOfLines = 0;
+        label.sizeToFit()
+        return label
+        
+    }()
+    
+    private lazy var errorPasswordLabel: UILabel = {
+        
+        let label = UILabel()
+        label.textColor = ColorConst.RED
+        label.font = FontSizeConst.SMALL_SIZE
+        label.text = TextConst.PASSWORD_CHECK_NG
+        label.numberOfLines = 0;
+        label.sizeToFit()
+        return label
+        
+    }()
+    
+    private lazy var errorRePasswordLabel: UILabel = {
+        
+        let label = UILabel()
+        label.textColor = ColorConst.RED
+        label.font = FontSizeConst.SMALL_SIZE
+        label.text = TextConst.PASSWORD_CHECK_NG
+        label.numberOfLines = 0;
+        label.sizeToFit()
+        return label
+        
+    }()
  
 
     override func viewDidLoad() {
@@ -86,9 +128,17 @@ class ResetPasswordViewController: BaseViewController {
         view.backgroundColor = ColorConst.MAIN_COLOR
         
         view.addSubview(titleLabel)
+        view.addSubview(mailField)
         view.addSubview(pwField)
         view.addSubview(rePwField)
         view.addSubview(resetButton)
+        view.addSubview(errorEmailLabel)
+        view.addSubview(errorPasswordLabel)
+        view.addSubview(errorRePasswordLabel)
+        
+        errorEmailLabel.isHidden = true
+        errorPasswordLabel.isHidden = true
+        errorRePasswordLabel.isHidden = true
         
         let tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGR.cancelsTouchesInView = false
@@ -103,10 +153,18 @@ class ResetPasswordViewController: BaseViewController {
         
         // タイトル
         titleLabel.frame = CGRect(x: 0, y: top, width: getScreenWidth(), height: titleLabel.frame.height)
+        // メールアドレス入力
+        mailField.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: titleLabel.frame.origin.y + titleLabel.frame.height + SizeConst.XX_LARGE_MARGIN, width: UIScreen.main.bounds.width - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TEXT_FIELD_HEIGHT)
+        // ERROR用ラベル
+        errorEmailLabel.frame = CGRect(x: SizeConst.SIDE_MARGIN * 2, y: mailField.frame.origin.y + mailField.frame.height + SizeConst.SMALL_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: errorEmailLabel.frame.height)
         // パスワード入力
-        pwField.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: titleLabel.frame.origin.y + titleLabel.frame.height + SizeConst.XX_LARGE_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TEXT_FIELD_HEIGHT)
+        pwField.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: errorEmailLabel.frame.origin.y + errorEmailLabel.frame.height + SizeConst.LARGE_MARGIN, width: UIScreen.main.bounds.width - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TEXT_FIELD_HEIGHT)
+        // ERROR用ラベル
+        errorPasswordLabel.frame = CGRect(x: SizeConst.SIDE_MARGIN * 2, y: pwField.frame.origin.y + pwField.frame.height + SizeConst.SMALL_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: errorPasswordLabel.frame.height)
         // パスワード確認用入力
-        rePwField.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: pwField.frame.origin.y + pwField.frame.height + SizeConst.XX_LARGE_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TEXT_FIELD_HEIGHT)
+        rePwField.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: errorPasswordLabel.frame.origin.y + errorPasswordLabel.frame.height + SizeConst.LARGE_MARGIN, width: UIScreen.main.bounds.width - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TEXT_FIELD_HEIGHT)
+        // ERROR用ラベル
+        errorRePasswordLabel.frame = CGRect(x: SizeConst.SIDE_MARGIN * 2, y: rePwField.frame.origin.y + rePwField.frame.height + SizeConst.SMALL_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: errorRePasswordLabel.frame.height)
         
         let yPosition = getScreenHeight() - getSafeAreaBottom() - SizeConst.BOTTOM_MARGIN - SizeConst.BUTTON_HEIGHT - SizeConst.LARGE_MARGIN -  getNavBarHeight() - getSafeAreaTop()
         
@@ -123,8 +181,50 @@ class ResetPasswordViewController: BaseViewController {
 
     // リセットボタンを押下した際に実行される関数です
     @objc private func pushResetButton() {
-        let vc = HomeViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        
+        var flag: Bool = true
+        
+        if checkEmail(text: mailField.text) {
+            // 入力したメールチェックOKの場合
+            errorEmailLabel.isHidden = true
+            
+        } else {
+            // 入力したメールチェックNGの場合
+            errorEmailLabel.isHidden = false
+            flag = false
+        }
+        
+        if checkPassword(text: pwField.text) {
+            // 入力したパスワードチェックの場合
+            errorPasswordLabel.isHidden = true
+            
+        } else {
+            // 入力したパスワードチェックNGの場合
+            errorPasswordLabel.isHidden = false
+            flag = false
+        }
+        
+        if checkPassword(text: rePwField.text) {
+            // 入力したパスワードチェックの場合
+            errorRePasswordLabel.isHidden = true
+            
+        } else {
+            // 入力したパスワードチェックNGの場合
+            errorRePasswordLabel.isHidden = false
+            flag = false
+        }
+        
+        if flag == true {
+            
+            errorEmailLabel.isHidden = true
+            errorPasswordLabel.isHidden = true
+            errorRePasswordLabel.isHidden = true
+            
+            let vc = HomeViewController()
+            navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        
     }
  
 }

@@ -10,6 +10,7 @@ import UIKit
 // ログイン時に表示されるViewControllerです
 
 class LoginViewController: BaseViewController {
+
     
     private lazy var titleLabel: UILabel = {
         
@@ -39,17 +40,17 @@ class LoginViewController: BaseViewController {
         
     }()
     
-    private var mailField: InputTextField = {
+    private lazy var mailField: InputTextField = {
         
-        let filed = InputTextField(frame: .zero, image: UIImage(named: "user")!, title: TextConst.EMAIL_PLACEHOLDER, type: .EMAIL)
-        return filed
+        let field = InputTextField(frame: .zero, image: UIImage(named: "user")!, title: TextConst.EMAIL_PLACEHOLDER, type: .EMAIL)
+        return field
         
     }()
     
     private lazy var pwField: InputTextField = {
         
-        let filed = InputTextField(frame: .zero, image: UIImage(named: "password")!, title: TextConst.EMAIL_PLACEHOLDER, type: .PASSWORD)
-        return filed
+        let field = InputTextField(frame: .zero, image: UIImage(named: "password")!, title: TextConst.PASSWORD_PLACEHOLDER, type: .PASSWORD)
+        return field
         
     }()
     
@@ -60,6 +61,30 @@ class LoginViewController: BaseViewController {
         
         return button
         
+        
+    }()
+    
+    private lazy var errorEmailLabel: UILabel = {
+        
+        let label = UILabel()
+        label.textColor = ColorConst.RED
+        label.font = FontSizeConst.SMALL_SIZE
+        label.numberOfLines = 0;
+        label.text = TextConst.MAIL_CHECK_NG
+        label.sizeToFit()
+        return label
+        
+    }()
+    
+    private lazy var errorPasswordLabel: UILabel = {
+        
+        let label = UILabel()
+        label.textColor = ColorConst.RED
+        label.font = FontSizeConst.SMALL_SIZE
+        label.text = TextConst.PASSWORD_CHECK_NG
+        label.numberOfLines = 0;
+        label.sizeToFit()
+        return label
         
     }()
     
@@ -78,6 +103,21 @@ class LoginViewController: BaseViewController {
         
     }()
     
+    // For Demo App
+    private lazy var demoLink: UILabel = {
+        
+        let link = UILabel()
+        link.textColor = ColorConst.WHITE
+        link.font = FontSizeConst.MIDDLE_SIZE
+        link.text = "Demo用リンクです"
+        link.textAlignment = .right
+        link.numberOfLines = 0;
+        link.sizeToFit()
+        link.isUserInteractionEnabled = true
+        link.tag = 100
+        return link
+        
+    }()
     
     
     override func viewDidLoad() {
@@ -110,6 +150,14 @@ class LoginViewController: BaseViewController {
         view.addSubview(resetPWLink)
         view.addSubview(loginButton)
         view.addSubview(registerLink)
+        view.addSubview(errorEmailLabel)
+        view.addSubview(errorPasswordLabel)
+        
+        // For Demo App
+        view.addSubview(demoLink)
+
+        errorEmailLabel.isHidden = true
+        errorPasswordLabel.isHidden = true
         
         let tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         // ジェスチャーの相殺を防ぎます
@@ -141,11 +189,18 @@ class LoginViewController: BaseViewController {
         // タイトル
         titleLabel.frame = CGRect(x: 0, y: getScreenHeight() * 0.15, width: getScreenWidth(), height: titleLabel.frame.height)
         // メールアドレス入力
-        mailField.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: titleLabel.frame.origin.y + titleLabel.frame.height + SizeConst.XX_LARGE_MARGIN, width: UIScreen.main.bounds.width - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TEXT_FIELD_HEIGHT)
+        mailField.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: titleLabel.frame.origin.y + titleLabel.frame.height + SizeConst.XX_LARGE_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TEXT_FIELD_HEIGHT)
+        // ERROR用ラベル
+        errorEmailLabel.frame = CGRect(x: SizeConst.SIDE_MARGIN * 2, y: mailField.frame.origin.y + mailField.frame.height + SizeConst.SMALL_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: errorEmailLabel.frame.height)
         // パスワード入力
-        pwField.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: mailField.frame.origin.y + mailField.frame.height + SizeConst.XX_LARGE_MARGIN, width: UIScreen.main.bounds.width - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TEXT_FIELD_HEIGHT)
+        pwField.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: errorEmailLabel.frame.origin.y + errorEmailLabel.frame.height + SizeConst.LARGE_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TEXT_FIELD_HEIGHT)
+        // ERROR用ラベル
+        errorPasswordLabel.frame = CGRect(x: SizeConst.SIDE_MARGIN * 2, y: pwField.frame.origin.y + pwField.frame.height + SizeConst.SMALL_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: errorPasswordLabel.frame.height)
         // パスワードリセット
-        resetPWLink.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: pwField.frame.origin.y + pwField.frame.height + SizeConst.LARGE_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: resetPWLink.frame.height)
+        resetPWLink.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: errorPasswordLabel.frame.origin.y + errorPasswordLabel.frame.height + SizeConst.LARGE_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: resetPWLink.frame.height)
+        
+        // For Demo App
+        demoLink.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: resetPWLink.frame.origin.y + resetPWLink.frame.height + SizeConst.X_LARGE_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: demoLink.frame.height)
         
         let yPosition = getScreenHeight() - getSafeAreaBottom() - SizeConst.BOTTOM_MARGIN - SizeConst.BUTTON_HEIGHT - registerLink.frame.size.height - SizeConst.LARGE_MARGIN
         
@@ -160,9 +215,41 @@ class LoginViewController: BaseViewController {
     // loginButtonタップ時に実行される関数です
     @objc private func login () {
         
-        let vc = RegisterViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        var flag: Bool = true
+        
+        if checkEmail(text: mailField.text) {
+            // 入力したメールチェックOKの場合
+            errorEmailLabel.isHidden = true
+            
+        } else {
+            // 入力したメールチェックNGの場合
+            errorEmailLabel.isHidden = false
+            flag = false
+        }
+        
+        if checkPassword(text: pwField.text) {
+            // 入力したパスワードチェックの場合
+            errorPasswordLabel.isHidden = true
+            
+        } else {
+            // 入力したパスワードチェックNGの場合
+            errorPasswordLabel.isHidden = false
+            flag = false
+        }
+        
+        if flag == true {
+            
+            errorEmailLabel.isHidden = true
+            errorPasswordLabel.isHidden = true
+            
+            let vc = RegisterViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
+
+        
     }
+    
+   
     
     
     // 画面をタップした際に実行される関数です
@@ -190,10 +277,14 @@ class LoginViewController: BaseViewController {
                 let vc = ResetPasswordViewController()
                 navigationController?.pushViewController(vc, animated: true)
                 
+            } else {
+                
+                // For Demp App
+                let vc = HomeViewController()
+                navigationController?.pushViewController(vc, animated: true)
             }
             
         }
     }
     
 }
-
