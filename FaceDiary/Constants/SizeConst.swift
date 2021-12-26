@@ -44,5 +44,8 @@ class SizeConst {
     // checkBoxのサイズ
     static let CHECKBOX_SIZE: CGFloat = 30.0
     
+    // FABの半径
+    static let FAB_RADIUS: CGFloat = 60.0
+    
     
 }

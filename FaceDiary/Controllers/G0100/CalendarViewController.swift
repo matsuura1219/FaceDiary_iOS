@@ -11,43 +11,50 @@ import UIKit
  カレンダーを表示するViewControllerです
  */
 
-class CalendarViewController: UIViewController {
+class CalendarViewController: BaseViewController {
     
-    // 変数
     // 1週間の日数
     private let DAY_OF_WEEK: Int = 7
     // 1ヶ月の最大週数
     private let MAX_WEEK: Int = 6
     // 曜日ラベル
     private let DAY_OF_WEEK_LABEL = ["日", "月", "火", "水", "木", "金", "土"]
-    
-    // カレンダーに表示する年月
+    // カレンダーに表示する年
     private var year: Int = 0
+    // カレンダーに表示する月
     private var month: Int = 0
+    
     
     // view
     private lazy var collectionView: UICollectionView = {
         
-        // セルのレイアウト設計
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        // 各々の設計に合わせて調整
-        // スクロールの方向
         layout.scrollDirection = .vertical
-        // セル同士（横同士）の間隔
         layout.minimumInteritemSpacing = 0.0
-        // 行間の間隔
         layout.minimumLineSpacing = 0.0
-        // collectionViewのレイアウト
         let collectionView = UICollectionView( frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: layout)
-        // 背景色
         collectionView.backgroundColor = .clear
-        
-        // セルの登録
         collectionView.register(CalendarCell.self, forCellWithReuseIdentifier: "CalendarCell")
         return collectionView
         
     }()
     
+    private lazy var fab: UIButton = {
+        
+        let button = UIButton()
+        button.backgroundColor = ColorConst.MAIN_COLOR
+        button.setTitle("＋", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowRadius = 1
+        button.layer.shadowOffset = CGSize(width: 1, height: 1)
+        button.layer.shadowOpacity = 0.5
+        button.layer.backgroundColor = ColorConst.MAIN_COLOR.cgColor
+        button.layer.cornerRadius = SizeConst.FAB_RADIUS / 2
+        button.addTarget(self, action: #selector(pushFAB), for: .touchUpInside)
+        return button
+        
+    }()
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,16 +65,30 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        // frameの設定
-        collectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: view.frame.height)
-      
+        // Layoutの設定を行います
+        setLayout()
+    }
+    
+    // ナビゲーションバーのタイトルに表示するテキストを設定する関数です
+    override func setNavTitle () -> String {
+        return ""
+    }
+    
+    // ナビゲーションバーを表示させるかを設定する関数です
+    override func showNav () -> Bool {
+        return true
+    }
+    
+    // 戻るボタンを表示させるかを設定する関数です
+    override func showBackButton() -> Bool {
+        return false
     }
     
     // 初期化を行う関数です
     private func setUp() {
         
         view.addSubview(collectionView)
+        view.addSubview(fab)
 
         view.backgroundColor = ColorConst.WHITE
         
@@ -85,40 +106,73 @@ class CalendarViewController: UIViewController {
     }
     
     
-    // コレクションビューの更新（通知された時に呼ばれるメソッド）
-    @objc func reloadCollectionView(notification: NSNotification) {
+    // Layoutを行う関数です
+    private func setLayout() {
         
-        let status = notification.userInfo!["status"] as? String
+        // collectionView
+        collectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: view.frame.height)
         
-        if status == "next" {
+        let left = UIScreen.main.bounds.width - SizeConst.SIDE_MARGIN - SizeConst.FAB_RADIUS
+        
+        let tab = tabBarController?.tabBar.frame.size.height ?? 0
+        let top = UIScreen.main.bounds.height - getSafeAreaTop() - getNavBarHeight() - tab - SizeConst.FAB_RADIUS - SizeConst.SIDE_MARGIN
+        
+        // FAB
+        fab.frame = CGRect(x: left, y: top, width: SizeConst.FAB_RADIUS, height: SizeConst.FAB_RADIUS)
+        
+    }
+    
+    
+    // グローバル変数の年と月を更新します
+    private func updateYearAndMonth(status: String?) {
+        
+        // nillチェック
+        guard let button = status else {
+            return
+        }
+        
+        if button == "next" {
             
             if month == 12 {
-                
                 year += 1
                 month = 1
                 
             } else {
-                
                 month += 1
+                
             }
             
-        } else if status == "back" {
+        } else {
             
             if month == 1 {
-                
                 year -= 1
                 month = 12
                 
             } else {
-                
                 month -= 1
                 
             }
         }
         
+    }
+    
+    // FAB押下時に実行される関数です
+    @objc private func pushFAB() {
+        
+        print("FABクリックしました！")
+    }
+    
+    // コレクションビューの更新（通知された時に呼ばれるメソッド）
+    @objc func reloadCollectionView(notification: NSNotification) {
+        
+        let status = notification.userInfo!["status"] as? String
+        // 年と月を更新します
+        updateYearAndMonth(status: status)
         self.collectionView.reloadData()
       
     }
+    
+    
     
 }
 
@@ -154,7 +208,7 @@ extension CalendarViewController: UICollectionViewDataSource {
             // 曜日欄の場合
             
             let cellText = DAY_OF_WEEK_LABEL[indexPath.row]
-            cell.setupContents(textName: cellText, section: indexPath.section, type: indexPath.row, isCurrent: true)
+            cell.setupContents(textName: cellText, section: indexPath.section, type: indexPath.row, isCurrent: true, color: nil)
             
         } else {
             // 日付欄の場合
@@ -175,17 +229,17 @@ extension CalendarViewController: UICollectionViewDataSource {
             if indexPath.row < youbi {
                 // 前月の日付
                 let cellText = String(previousMonthDaySum - youbi + indexPath.row + 1)
-                cell.setupContents(textName: cellText, section: indexPath.section, type: indexPath.row, isCurrent: false)
+                cell.setupContents(textName: cellText, section: indexPath.section, type: indexPath.row, isCurrent: false, color: nil)
                 
             } else if indexPath.row < youbi + currentMonthDaySum {
                 // 現在の日付
                 let cellText = String(indexPath.row - youbi + 1)
-                cell.setupContents(textName: cellText, section: indexPath.section, type: indexPath.row, isCurrent: true)
+                cell.setupContents(textName: cellText, section: indexPath.section, type: indexPath.row, isCurrent: true, color: ColorConst.BLUE)
                 
             } else {
                 // 翌月の日付
                 let cellText = String(indexPath.row - currentMonthDaySum - youbi + 1)
-                cell.setupContents(textName: cellText, section: indexPath.section, type: indexPath.row, isCurrent: false)
+                cell.setupContents(textName: cellText, section: indexPath.section, type: indexPath.row, isCurrent: false, color: nil)
                 
             }
             
@@ -205,11 +259,11 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
         
         if indexPath.section == 0 {
             // 曜日欄
-            return CGSize(width: collectionView.frame.width / 7.0, height: collectionView.frame.width / 7.0)
+            return CGSize(width: collectionView.frame.width / 7.0, height: collectionView.frame.width / 6.0)
             
         } else {
             // 日付欄
-            return CGSize(width: collectionView.frame.width / 7.0, height: collectionView.frame.width / 7.0)
+            return CGSize(width: collectionView.frame.width / 7.0, height: collectionView.frame.width / 5.0)
             
         }
         

@@ -7,9 +7,8 @@
 
 import Foundation
 
-/**
- ヘッダーに表示する日付を計算する関数です
- */
+// カレンダー表示に使用するための計算用関数です
+
 
 class DateManager {
     

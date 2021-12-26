@@ -14,12 +14,24 @@ class CalendarCell: UICollectionViewCell {
     private let textLabel: UILabel = {
         
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width / 7.0, height: UIScreen.main.bounds.width / 7.0)
+        label.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width / 7.0, height: UIScreen.main.bounds.width / 5.0)
         label.textColor = ColorConst.BLACK
         label.textAlignment = .center
         label.font = FontSizeConst.MIDDLE_SIZE
-        label.backgroundColor = ColorConst.WHITE
+        
         return label
+        
+    }()
+    
+    private lazy var cellView: UIView = {
+        
+        let radius = UIScreen.main.bounds.width / 7.0 * 0.8
+        let view = UIView()
+        view.frame = CGRect(x: (UIScreen.main.bounds.width / 7.0 - radius) / 2, y: (UIScreen.main.bounds.width / 5.0 - radius) / 2, width: radius, height: radius)
+        view.layer.cornerRadius = radius / 2
+        view.layer.borderWidth = 2.0
+        view.backgroundColor = ColorConst.WHITE
+        return view
         
     }()
     
@@ -39,17 +51,20 @@ class CalendarCell: UICollectionViewCell {
     // cellの設定を行う関数です
     private func setCell() {
         
+        contentView.addSubview(cellView)
         contentView.addSubview(textLabel)
         
     }
     
     // UILabelに設定する値を設定する関数です
-    func setupContents(textName: String, section: Int, type: Int, isCurrent: Bool) {
+    func setupContents(textName: String, section: Int, type: Int, isCurrent: Bool, color: UIColor?) {
         
         // labelの文字の設定
         textLabel.text = textName
         
         if section == 0 {
+            
+            cellView.isHidden = true
             
             switch type {
             
@@ -78,10 +93,13 @@ class CalendarCell: UICollectionViewCell {
             if isCurrent {
                 // 当月の場合
                 textLabel.textColor = ColorConst.BLACK
+                cellView.isHidden = false
+                cellView.layer.borderColor = color?.cgColor
                 
             } else {
-                // 冬月でない場合
+                // 当月でない場合
                 textLabel.textColor = ColorConst.BLACK_ALPHA
+                cellView.isHidden = true
                 
             }
            

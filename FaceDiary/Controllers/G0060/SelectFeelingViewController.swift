@@ -17,7 +17,7 @@ class SelectFeelingViewController: BaseViewController {
         let label = UILabel()
         label.textColor = ColorConst.WHITE
         label.font = FontSizeConst.X_LARGE_SIZE
-        label.text = "今日のあなたはどうでしたか？"
+        label.text = TextConst.G0060_TITLE
         label.textAlignment = .center
         label.numberOfLines = 0;
         label.sizeToFit()
@@ -30,7 +30,7 @@ class SelectFeelingViewController: BaseViewController {
         let label = UILabel()
         label.textColor = ColorConst.WHITE
         label.font = FontSizeConst.LARGE_SIZE
-        label.text = "サイコーでした！"
+        label.text = TextConst.G0060_ITEM1
         label.textAlignment = .left
         label.numberOfLines = 0;
         label.sizeToFit()
@@ -43,7 +43,7 @@ class SelectFeelingViewController: BaseViewController {
         let label = UILabel()
         label.textColor = ColorConst.WHITE
         label.font = FontSizeConst.LARGE_SIZE
-        label.text = "サイコーでした！"
+        label.text = TextConst.G0060_ITEM2
         label.textAlignment = .left
         label.numberOfLines = 0;
         label.sizeToFit()
@@ -56,7 +56,7 @@ class SelectFeelingViewController: BaseViewController {
         let label = UILabel()
         label.textColor = ColorConst.WHITE
         label.font = FontSizeConst.LARGE_SIZE
-        label.text = "サイコーでした！"
+        label.text = TextConst.G0060_ITEM3
         label.textAlignment = .left
         label.numberOfLines = 0;
         label.sizeToFit()
@@ -69,7 +69,7 @@ class SelectFeelingViewController: BaseViewController {
         let label = UILabel()
         label.textColor = ColorConst.WHITE
         label.font = FontSizeConst.LARGE_SIZE
-        label.text = "サイコーでした！"
+        label.text = TextConst.G0060_ITEM4
         label.textAlignment = .left
         label.numberOfLines = 0;
         label.sizeToFit()

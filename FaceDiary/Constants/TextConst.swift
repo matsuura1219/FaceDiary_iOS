@@ -64,11 +64,16 @@ class TextConst {
     // noボタン
     static let G0050_NO_BUTTON_TEXT = "後で"
     
-    // G0060-01
+    // G0050-01
     // タイトル
     static let G0060_TITLE: String = "今日のあなたを登録しますか？"
     // yesボタン
     static let G0060_YES_BUTTON_TEXT = "確定"
+    static let G0060_ITEM1 = "サイコーな1日でした！"
+    static let G0060_ITEM2 = "まぁまぁでした！"
+    static let G0060_ITEM3 = "あまりでした・・・"
+    static let G0060_ITEM4 = "サイアクな1日でした・・・"
+    
     
     // G0080
     // タイトル
