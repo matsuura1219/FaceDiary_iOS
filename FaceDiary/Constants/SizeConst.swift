@@ -47,5 +47,14 @@ class SizeConst {
     // FABの半径
     static let FAB_RADIUS: CGFloat = 60.0
     
+    // cellの高さ
+    static let CELL_HEIGHT: CGFloat = 100.0
+    
+    // sectionLabelの高さ
+    static let SECTION_LABEL_HEIGHT: CGFloat = 30.0
+    
+    // sectionの高さ
+    static let SECTION_HEIGHT: CGFloat = 50.0
+    
     
 }

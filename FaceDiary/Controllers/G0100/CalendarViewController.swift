@@ -23,6 +23,8 @@ class CalendarViewController: BaseViewController {
     private var year: Int = 0
     // カレンダーに表示する月
     private var month: Int = 0
+    // dialog
+    private var dialogView: DialogView?
     
     
     // view
@@ -55,7 +57,8 @@ class CalendarViewController: BaseViewController {
         return button
         
     }()
-  
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // 初期化を行います
@@ -89,7 +92,7 @@ class CalendarViewController: BaseViewController {
         
         view.addSubview(collectionView)
         view.addSubview(fab)
-
+        
         view.backgroundColor = ColorConst.WHITE
         
         // 現在の年月をグローバル変数に設定します
@@ -160,6 +163,16 @@ class CalendarViewController: BaseViewController {
     @objc private func pushFAB() {
         
         print("FABクリックしました！")
+        
+        dialogView = DialogView(frame: CGRect(x: 0, y: 0, width: getScreenWidth(), height: getScreenHeight()), message: TextConst.G0100_REGISTER_POPUP, yes: TextConst.YES, no: TextConst.NO, delegate: self)
+        
+        guard let dialog = dialogView else {
+            return
+        }
+        
+        // ポップアップ画面を表示します
+        UIApplication.shared.connectedScenes.filter({$0.activationState == .foregroundActive}).map({$0 as? UIWindowScene}).compactMap({$0}).first?.windows.filter({$0.isKeyWindow}).first?.addSubview(dialog)
+        
     }
     
     // コレクションビューの更新（通知された時に呼ばれるメソッド）
@@ -169,11 +182,58 @@ class CalendarViewController: BaseViewController {
         // 年と月を更新します
         updateYearAndMonth(status: status)
         self.collectionView.reloadData()
-      
+        
     }
     
+}
+
+
+extension CalendarViewController: ButtonTapped {
     
+    // ポップアップ画面のボタンクリック時
+    func tappedButton(type: ClickTypeEnum) {
+        
+        // ポップアップ画面を非表示にします
+        dialogView?.removeFromSuperview()
+        
+        switch type {
+        
+        case .YES_BUTTON:
+            print("YES!!")
+            
+        case .NO_BUTTON:
+            print("NO!!!")
+            
+        default:
+            print("ERROR!")
+            
+        }
+    }
     
+
+}
+
+extension CalendarViewController: UICollectionViewDelegate {
+    
+    //Cellがクリックされた時によばれます
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if indexPath.section == 1 {
+            
+            // 指定の年月の合計日数
+            let currentMonthDaySum = DateManager.numberOfDays(year: year, month: month)
+            // 指定年月日の最初の曜日
+            let youbi = DateManager.dayOfWeek(year: year, month: month, day: 1)
+    
+            if indexPath.row >= youbi && indexPath.row < youbi + currentMonthDaySum {
+              
+                let tappedDay = indexPath.row - youbi + 1
+                print(tappedDay)
+                
+            }
+            
+        }
+    }
 }
 
 
@@ -269,3 +329,5 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
         
     }
 }
+
+

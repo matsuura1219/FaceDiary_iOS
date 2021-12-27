@@ -23,6 +23,8 @@
 		D231A1A22742AB3C002A19B9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D231A1A12742AB3C002A19B9 /* HomeViewController.swift */; };
 		D244535D275A345000743E4B /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D244535C275A345000743E4B /* CalendarCell.swift */; };
 		D25B5EE3274E7A3400931F3B /* FeelingTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25B5EE2274E7A3400931F3B /* FeelingTypeEnum.swift */; };
+		D2671DC227785749006B628D /* DialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2671DC127785749006B628D /* DialogView.swift */; };
+		D2671DC72779F52C006B628D /* ButtonTapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2671DC62779F52C006B628D /* ButtonTapped.swift */; };
 		D267A0102746732100454D8C /* TextTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D267A00F2746732100454D8C /* TextTypeEnum.swift */; };
 		D26A41A82743680C00C77A5A /* ColorConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26A41A72743680B00C77A5A /* ColorConst.swift */; };
 		D26A41AD274368CA00C77A5A /* FontSizeConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26A41AC274368CA00C77A5A /* FontSizeConst.swift */; };
@@ -81,6 +83,8 @@
 		D231A1A12742AB3C002A19B9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D244535C275A345000743E4B /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		D25B5EE2274E7A3400931F3B /* FeelingTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingTypeEnum.swift; sourceTree = "<group>"; };
+		D2671DC127785749006B628D /* DialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogView.swift; sourceTree = "<group>"; };
+		D2671DC62779F52C006B628D /* ButtonTapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTapped.swift; sourceTree = "<group>"; };
 		D267A00F2746732100454D8C /* TextTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTypeEnum.swift; sourceTree = "<group>"; };
 		D26A41A72743680B00C77A5A /* ColorConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConst.swift; sourceTree = "<group>"; };
 		D26A41AC274368CA00C77A5A /* FontSizeConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeConst.swift; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 			children = (
 				D21FDAB62744868700A9E845 /* InputTextField.swift */,
 				D21FDABB2744871700A9E845 /* CustomButton.swift */,
+				D2671DC127785749006B628D /* DialogView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -266,6 +271,7 @@
 		D231A1812742A7E1002A19B9 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				D2671DC62779F52C006B628D /* ButtonTapped.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -512,6 +518,7 @@
 				D2FF8921274C8EF5002FC991 /* ContentTypeEnum.swift in Sources */,
 				D21FDAB72744868700A9E845 /* InputTextField.swift in Sources */,
 				D231A1A22742AB3C002A19B9 /* HomeViewController.swift in Sources */,
+				D2671DC72779F52C006B628D /* ButtonTapped.swift in Sources */,
 				D26A41B727436A1400C77A5A /* SizeConst.swift in Sources */,
 				D21FDABC2744871700A9E845 /* CustomButton.swift in Sources */,
 				D2C88F02275B5A6300D462F6 /* YoubiEnum.swift in Sources */,
@@ -526,6 +533,7 @@
 				D21FDA8A2744851700A9E845 /* SignUpViewController.swift in Sources */,
 				D231A1962742A9E8002A19B9 /* BaseViewController.swift in Sources */,
 				D26A41A82743680C00C77A5A /* ColorConst.swift in Sources */,
+				D2671DC227785749006B628D /* DialogView.swift in Sources */,
 				D26C280E2775F56200FAF60A /* AlbumCelll.swift in Sources */,
 				D244535D275A345000743E4B /* CalendarCell.swift in Sources */,
 				D21FDA7C274484E300A9E845 /* LoginViewController.swift in Sources */,

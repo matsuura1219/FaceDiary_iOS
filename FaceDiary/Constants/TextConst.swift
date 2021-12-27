@@ -19,6 +19,8 @@ class TextConst {
     static let LOGIN: String = "LOGIN"
     static let SINGNUP: String = "SIGN UP"
     static let RESET: String = "RESET"
+    static let YES = "はい"
+    static let NO = "いいえ"
     
     // リセットリンク
     static let RESET_PASSWORD_LINK: String = "パスワードをお忘れの方はこちら"
@@ -83,10 +85,14 @@ class TextConst {
     // タイトル
     static let G0090_TITLE: String = "アルバム"
     
+    // G0100
+    static let G0100_REGISTER_POPUP = "本日の感情を登録します。よろしいですか？"
+    
     
     // ERROR
     static let MAIL_CHECK_NG: String = "正しいメールアドレスを入力してください"
     static let PASSWORD_CHECK_NG = "英数字8文字以上を入力してください"
+    
 
 
 }
