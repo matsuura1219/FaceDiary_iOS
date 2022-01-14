@@ -7,9 +7,10 @@
 
 import UIKit
 
-class AlbumViewController: UIViewController {
+class AlbumViewController: BaseViewController {
     
-    // view
+    // MARK: - view variables
+    
     private lazy var collectionView: UICollectionView = {
         
         // セルのレイアウト設計
@@ -22,7 +23,7 @@ class AlbumViewController: UIViewController {
         // 行間の間隔
         layout.minimumLineSpacing = 0.0
         // セクション毎のヘッダーサイズ.
-        layout.headerReferenceSize = CGSize(width: 100,height: 80)
+        layout.headerReferenceSize = CGSize(width: 100,height: SizeConst.LARGE_MARGIN * 2 + SizeConst.SECTION_LABEL_HEIGHT)
         // collectionViewのレイアウト
         let collectionView = UICollectionView( frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: layout)
         // 背景色
@@ -35,12 +36,40 @@ class AlbumViewController: UIViewController {
     }()
     
     
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 初期化を行います
         setUp()
 
     }
+    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setLayout()
+    }
+    
+    
+    // MARK: - override Function
+    
+    // ナビゲーションバーのタイトルに表示するテキストを設定する関数です
+    override func setNavTitle () -> String {
+        return ""
+    }
+    
+    // ナビゲーションバーを表示させるかを設定する関数です
+    override func showNav () -> Bool {
+        return true
+    }
+    
+    // 戻るボタンを表示させるかを設定する関数です
+    override func showBackButton() -> Bool {
+        return false
+    }
+    
+    
+    // MARK: - Function
     
     // 初期化を行う関数です
     private func setUp() {
@@ -55,9 +84,18 @@ class AlbumViewController: UIViewController {
         
     }
     
+    // Layoutを行う関数です
+    private func setLayout() {
+        
+        let tabBarHeight = tabBarController?.tabBar.frame.size.height ?? 0
+        collectionView.frame = CGRect(x: 0, y: 0, width: getScreenWidth(), height: getScreenHeight() - getSafeAreaTop() - getNavBarHeight() - tabBarHeight)
+    }
+    
 }
 
 extension AlbumViewController: UICollectionViewDataSource {
+    
+    // MARK: - delegate
     
     // セクションの数(０：曜日ラベル、１：日付)
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -82,11 +120,11 @@ extension AlbumViewController: UICollectionViewDataSource {
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Section", for: indexPath)
         let label = UILabel()
-        label.text = "table"
-        label.frame = CGRect(x: 0, y: 20, width: collectionView.frame.width, height: 30)
-        label.textColor = UIColor.black
-        label.backgroundColor = ColorConst.GRAY
-        headerView.backgroundColor = .clear
+        label.text = "   2021 / 12"
+        label.frame = CGRect(x: 0, y: SizeConst.LARGE_MARGIN, width: collectionView.frame.width, height: SizeConst.SECTION_LABEL_HEIGHT)
+        label.textColor = ColorConst.SUB_TEXT_COLOR
+        label.backgroundColor = ColorConst.SUB_COLOR
+        headerView.backgroundColor = ColorConst.WHITE
         label.backgroundColor = ColorConst.SUB_COLOR
         headerView.addSubview(label)
         return headerView
@@ -98,6 +136,8 @@ extension AlbumViewController: UICollectionViewDataSource {
 
 //cellのサイズの設定
 extension AlbumViewController: UICollectionViewDelegateFlowLayout {
+    
+    // MARK: - delegate
     
     // cellのサイズを設定します
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

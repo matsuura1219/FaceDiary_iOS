@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7ABE10DBB9A55E0B2F7BFB37 /* Pods_FaceDiary_FaceDiaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8789197C170CB47A174F3F41 /* Pods_FaceDiary_FaceDiaryUITests.framework */; };
+		9C4555DC6979B94677191F37 /* Pods_FaceDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B00E9365426A077BCF8AFB2 /* Pods_FaceDiary.framework */; };
 		D20C45C02778116E00086FB4 /* SampleJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20C45BF2778116E00086FB4 /* SampleJson.swift */; };
 		D2133E40276F6AD5001E351C /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2133E3F276F6AD5001E351C /* TimelineCell.swift */; };
 		D21FDA7C274484E300A9E845 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21FDA7B274484E300A9E845 /* LoginViewController.swift */; };
@@ -22,6 +24,7 @@
 		D231A1962742A9E8002A19B9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D231A1952742A9E8002A19B9 /* BaseViewController.swift */; };
 		D231A1A22742AB3C002A19B9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D231A1A12742AB3C002A19B9 /* HomeViewController.swift */; };
 		D244535D275A345000743E4B /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D244535C275A345000743E4B /* CalendarCell.swift */; };
+		D24B678D277F524500B40465 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B678C277F524500B40465 /* ProgressBar.swift */; };
 		D25B5EE3274E7A3400931F3B /* FeelingTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25B5EE2274E7A3400931F3B /* FeelingTypeEnum.swift */; };
 		D2671DC227785749006B628D /* DialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2671DC127785749006B628D /* DialogView.swift */; };
 		D2671DC72779F52C006B628D /* ButtonTapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2671DC62779F52C006B628D /* ButtonTapped.swift */; };
@@ -33,7 +36,8 @@
 		D26A41C027437AEA00C77A5A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26A41BF27437AEA00C77A5A /* RegisterViewController.swift */; };
 		D26C280E2775F56200FAF60A /* AlbumCelll.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C280D2775F56200FAF60A /* AlbumCelll.swift */; };
 		D279399F27490C23000F817E /* ClickTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D279399E27490C23000F817E /* ClickTypeEnum.swift */; };
-		D2B5C1DC2774B6E1006255D0 /* TimelineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5C1DB2774B6E1006255D0 /* TimelineHeaderView.swift */; };
+		D2C62EB5277C2CA500A2AE67 /* Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C62EB4277C2CA500A2AE67 /* Extenstions.swift */; };
+		D2C62EBB277F4D6E00A2AE67 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C62EBA277F4D6E00A2AE67 /* DetailViewController.swift */; };
 		D2C88F02275B5A6300D462F6 /* YoubiEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C88F01275B5A6300D462F6 /* YoubiEnum.swift */; };
 		D2D7F2E0274BE07400EE35D8 /* SelectFeelingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D7F2DF274BE07400EE35D8 /* SelectFeelingViewController.swift */; };
 		D2D7F2EC274BE18500EE35D8 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D7F2EB274BE18500EE35D8 /* TimelineViewController.swift */; };
@@ -41,6 +45,7 @@
 		D2D7F305274BE49900EE35D8 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D7F304274BE49900EE35D8 /* CalendarViewController.swift */; };
 		D2FF8921274C8EF5002FC991 /* ContentTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF8920274C8EF5002FC991 /* ContentTypeEnum.swift */; };
 		D2FF8931274C94D2002FC991 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF8930274C94D2002FC991 /* DateManager.swift */; };
+		EB6EE8D1DC05599E8A4E796E /* Pods_FaceDiaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF270E9C0B379028E8FFC590 /* Pods_FaceDiaryTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +66,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0083152267135ED3A4A687CF /* Pods-FaceDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceDiary.release.xcconfig"; path = "Target Support Files/Pods-FaceDiary/Pods-FaceDiary.release.xcconfig"; sourceTree = "<group>"; };
+		1B00E9365426A077BCF8AFB2 /* Pods_FaceDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaceDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4429224EC93E800E087E5113 /* Pods-FaceDiary-FaceDiaryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceDiary-FaceDiaryUITests.release.xcconfig"; path = "Target Support Files/Pods-FaceDiary-FaceDiaryUITests/Pods-FaceDiary-FaceDiaryUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5A191257F03F82EC801ED496 /* Pods-FaceDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceDiary.debug.xcconfig"; path = "Target Support Files/Pods-FaceDiary/Pods-FaceDiary.debug.xcconfig"; sourceTree = "<group>"; };
+		68E0A402C6CCF004CCE0994C /* Pods-FaceDiaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceDiaryTests.release.xcconfig"; path = "Target Support Files/Pods-FaceDiaryTests/Pods-FaceDiaryTests.release.xcconfig"; sourceTree = "<group>"; };
+		7EF0AE521C732B6C0DE7A340 /* Pods-FaceDiary-FaceDiaryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceDiary-FaceDiaryUITests.debug.xcconfig"; path = "Target Support Files/Pods-FaceDiary-FaceDiaryUITests/Pods-FaceDiary-FaceDiaryUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8789197C170CB47A174F3F41 /* Pods_FaceDiary_FaceDiaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaceDiary_FaceDiaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20C45BF2778116E00086FB4 /* SampleJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleJson.swift; sourceTree = "<group>"; };
 		D2133E3F276F6AD5001E351C /* TimelineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
 		D21FDA7B274484E300A9E845 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +94,7 @@
 		D231A1952742A9E8002A19B9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D231A1A12742AB3C002A19B9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D244535C275A345000743E4B /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		D24B678C277F524500B40465 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D25B5EE2274E7A3400931F3B /* FeelingTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingTypeEnum.swift; sourceTree = "<group>"; };
 		D2671DC127785749006B628D /* DialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogView.swift; sourceTree = "<group>"; };
 		D2671DC62779F52C006B628D /* ButtonTapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTapped.swift; sourceTree = "<group>"; };
@@ -93,7 +106,8 @@
 		D26A41BF27437AEA00C77A5A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D26C280D2775F56200FAF60A /* AlbumCelll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCelll.swift; sourceTree = "<group>"; };
 		D279399E27490C23000F817E /* ClickTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickTypeEnum.swift; sourceTree = "<group>"; };
-		D2B5C1DB2774B6E1006255D0 /* TimelineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineHeaderView.swift; sourceTree = "<group>"; };
+		D2C62EB4277C2CA500A2AE67 /* Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extenstions.swift; sourceTree = "<group>"; };
+		D2C62EBA277F4D6E00A2AE67 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D2C88F01275B5A6300D462F6 /* YoubiEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoubiEnum.swift; sourceTree = "<group>"; };
 		D2D7F2DF274BE07400EE35D8 /* SelectFeelingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFeelingViewController.swift; sourceTree = "<group>"; };
 		D2D7F2EB274BE18500EE35D8 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +115,8 @@
 		D2D7F304274BE49900EE35D8 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		D2FF8920274C8EF5002FC991 /* ContentTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTypeEnum.swift; sourceTree = "<group>"; };
 		D2FF8930274C94D2002FC991 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		E270BDB5985C0C6FA44F5183 /* Pods-FaceDiaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceDiaryTests.debug.xcconfig"; path = "Target Support Files/Pods-FaceDiaryTests/Pods-FaceDiaryTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FF270E9C0B379028E8FFC590 /* Pods_FaceDiaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaceDiaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C4555DC6979B94677191F37 /* Pods_FaceDiary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB6EE8D1DC05599E8A4E796E /* Pods_FaceDiaryTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,12 +140,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ABE10DBB9A55E0B2F7BFB37 /* Pods_FaceDiary_FaceDiaryUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		088199A2D72A5868DC06A4CB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5A191257F03F82EC801ED496 /* Pods-FaceDiary.debug.xcconfig */,
+				0083152267135ED3A4A687CF /* Pods-FaceDiary.release.xcconfig */,
+				7EF0AE521C732B6C0DE7A340 /* Pods-FaceDiary-FaceDiaryUITests.debug.xcconfig */,
+				4429224EC93E800E087E5113 /* Pods-FaceDiary-FaceDiaryUITests.release.xcconfig */,
+				E270BDB5985C0C6FA44F5183 /* Pods-FaceDiaryTests.debug.xcconfig */,
+				68E0A402C6CCF004CCE0994C /* Pods-FaceDiaryTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		1D69B233E3E3563E4310767C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B00E9365426A077BCF8AFB2 /* Pods_FaceDiary.framework */,
+				8789197C170CB47A174F3F41 /* Pods_FaceDiary_FaceDiaryUITests.framework */,
+				FF270E9C0B379028E8FFC590 /* Pods_FaceDiaryTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D20C45BE2778116100086FB4 /* Samples */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +217,8 @@
 				D231A15A2742A635002A19B9 /* FaceDiaryTests */,
 				D231A1652742A635002A19B9 /* FaceDiaryUITests */,
 				D231A1422742A631002A19B9 /* Products */,
+				088199A2D72A5868DC06A4CB /* Pods */,
+				1D69B233E3E3563E4310767C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -239,6 +284,7 @@
 				D2D7F2E9274BE15D00EE35D8 /* G0080 */,
 				D2D7F2EA274BE16A00EE35D8 /* G0090 */,
 				D2D7F2F8274BE41300EE35D8 /* G0100 */,
+				D2C62EB9277F4D0500A2AE67 /* G0110 */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -264,6 +310,7 @@
 				D21FDAB62744868700A9E845 /* InputTextField.swift */,
 				D21FDABB2744871700A9E845 /* CustomButton.swift */,
 				D2671DC127785749006B628D /* DialogView.swift */,
+				D24B678C277F524500B40465 /* ProgressBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -311,6 +358,7 @@
 		D23993FC2777200900C3AC97 /* Extenstions */ = {
 			isa = PBXGroup;
 			children = (
+				D2C62EB4277C2CA500A2AE67 /* Extenstions.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -346,6 +394,14 @@
 			path = G0050;
 			sourceTree = "<group>";
 		};
+		D2C62EB9277F4D0500A2AE67 /* G0110 */ = {
+			isa = PBXGroup;
+			children = (
+				D2C62EBA277F4D6E00A2AE67 /* DetailViewController.swift */,
+			);
+			path = G0110;
+			sourceTree = "<group>";
+		};
 		D2D7F2DE274BE05500EE35D8 /* G0060 */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,7 +415,6 @@
 			children = (
 				D2D7F2EB274BE18500EE35D8 /* TimelineViewController.swift */,
 				D2133E3F276F6AD5001E351C /* TimelineCell.swift */,
-				D2B5C1DB2774B6E1006255D0 /* TimelineHeaderView.swift */,
 			);
 			path = G0080;
 			sourceTree = "<group>";
@@ -389,9 +444,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D231A16B2742A635002A19B9 /* Build configuration list for PBXNativeTarget "FaceDiary" */;
 			buildPhases = (
+				39A01CC932CDFEB74BEE37F0 /* [CP] Check Pods Manifest.lock */,
 				D231A13D2742A630002A19B9 /* Sources */,
 				D231A13E2742A630002A19B9 /* Frameworks */,
 				D231A13F2742A630002A19B9 /* Resources */,
+				94843A50E42C1176DC7D9533 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -406,6 +463,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D231A16E2742A635002A19B9 /* Build configuration list for PBXNativeTarget "FaceDiaryTests" */;
 			buildPhases = (
+				3238A3253F156D7E32412714 /* [CP] Check Pods Manifest.lock */,
 				D231A1532742A635002A19B9 /* Sources */,
 				D231A1542742A635002A19B9 /* Frameworks */,
 				D231A1552742A635002A19B9 /* Resources */,
@@ -424,9 +482,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D231A1712742A635002A19B9 /* Build configuration list for PBXNativeTarget "FaceDiaryUITests" */;
 			buildPhases = (
+				83D61ED5F424D317CA28DAD3 /* [CP] Check Pods Manifest.lock */,
 				D231A15E2742A635002A19B9 /* Sources */,
 				D231A15F2742A635002A19B9 /* Frameworks */,
 				D231A1602742A635002A19B9 /* Resources */,
+				2A5F44896DF091EC9C971A54 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -505,11 +565,115 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2A5F44896DF091EC9C971A54 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FaceDiary-FaceDiaryUITests/Pods-FaceDiary-FaceDiaryUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FaceDiary-FaceDiaryUITests/Pods-FaceDiary-FaceDiaryUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FaceDiary-FaceDiaryUITests/Pods-FaceDiary-FaceDiaryUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3238A3253F156D7E32412714 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FaceDiaryTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39A01CC932CDFEB74BEE37F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FaceDiary-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83D61ED5F424D317CA28DAD3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FaceDiary-FaceDiaryUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94843A50E42C1176DC7D9533 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FaceDiary/Pods-FaceDiary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FaceDiary/Pods-FaceDiary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FaceDiary/Pods-FaceDiary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D231A13D2742A630002A19B9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C62EBB277F4D6E00A2AE67 /* DetailViewController.swift in Sources */,
 				D26A41B22743696A00C77A5A /* TextConst.swift in Sources */,
 				D2FF8931274C94D2002FC991 /* DateManager.swift in Sources */,
 				D26A41C027437AEA00C77A5A /* RegisterViewController.swift in Sources */,
@@ -526,9 +690,10 @@
 				D2D7F2EC274BE18500EE35D8 /* TimelineViewController.swift in Sources */,
 				D20C45C02778116E00086FB4 /* SampleJson.swift in Sources */,
 				D2D7F305274BE49900EE35D8 /* CalendarViewController.swift in Sources */,
+				D2C62EB5277C2CA500A2AE67 /* Extenstions.swift in Sources */,
+				D24B678D277F524500B40465 /* ProgressBar.swift in Sources */,
 				D231A1452742A631002A19B9 /* AppDelegate.swift in Sources */,
 				D267A0102746732100454D8C /* TextTypeEnum.swift in Sources */,
-				D2B5C1DC2774B6E1006255D0 /* TimelineHeaderView.swift in Sources */,
 				D2D7F2E0274BE07400EE35D8 /* SelectFeelingViewController.swift in Sources */,
 				D21FDA8A2744851700A9E845 /* SignUpViewController.swift in Sources */,
 				D231A1962742A9E8002A19B9 /* BaseViewController.swift in Sources */,
@@ -694,6 +859,7 @@
 		};
 		D231A16C2742A635002A19B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A191257F03F82EC801ED496 /* Pods-FaceDiary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -716,6 +882,7 @@
 		};
 		D231A16D2742A635002A19B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0083152267135ED3A4A687CF /* Pods-FaceDiary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -738,6 +905,7 @@
 		};
 		D231A16F2742A635002A19B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E270BDB5985C0C6FA44F5183 /* Pods-FaceDiaryTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -760,6 +928,7 @@
 		};
 		D231A1702742A635002A19B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68E0A402C6CCF004CCE0994C /* Pods-FaceDiaryTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -782,6 +951,7 @@
 		};
 		D231A1722742A635002A19B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EF0AE521C732B6C0DE7A340 /* Pods-FaceDiary-FaceDiaryUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -802,6 +972,7 @@
 		};
 		D231A1732742A635002A19B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4429224EC93E800E087E5113 /* Pods-FaceDiary-FaceDiaryUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

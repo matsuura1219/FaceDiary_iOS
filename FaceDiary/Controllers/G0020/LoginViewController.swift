@@ -11,6 +11,7 @@ import UIKit
 
 class LoginViewController: BaseViewController {
 
+    // MARK: - view variables
     
     private lazy var titleLabel: UILabel = {
         
@@ -58,9 +59,7 @@ class LoginViewController: BaseViewController {
         
         let button = CustomButton(frame: .zero, bkColor: ColorConst.WHITE, borderColor: ColorConst.WHITE.cgColor, title: TextConst.LOGIN, textColor: ColorConst.MAIN_TEXT_COLOR)
         button.addTarget(self, action: #selector(login), for: .touchUpInside)
-        
         return button
-        
         
     }()
     
@@ -119,25 +118,41 @@ class LoginViewController: BaseViewController {
         
     }()
     
+   
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 初期化を行います
         setUp()
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    // レイアウトを行う関数です
+  
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // layoutの設定を行います
         setLayout()
         
     }
+    
+    
+    // MARK: - override Function
+    
+    // ナビゲーションバーのタイトルに表示するテキストを設定する関数です
+    override func setNavTitle () -> String {
+        return ""
+    }
+    
+    // ナビゲーションバーを表示させるかを設定する関数です
+    override func showNav () -> Bool {
+        return false
+    }
+    
+    // 戻るボタンを表示させるかを設定する関数です
+    override func showBackButton() -> Bool {
+        return false
+    }
+    
+    
+    // MARK: - Function
     
     // 初期化を行う関数です
     private func setUp() {
@@ -166,23 +181,6 @@ class LoginViewController: BaseViewController {
         
     }
     
-    
-    // ナビゲーションバーのタイトルに表示するテキストを設定する関数です
-    override func setNavTitle () -> String {
-        return ""
-    }
-    
-    // ナビゲーションバーを表示させるかを設定する関数です
-    override func showNav () -> Bool {
-        return false
-    }
-    
-    // 戻るボタンを表示させるかを設定する関数です
-    override func showBackButton() -> Bool {
-        return false
-    }
-    
-    
     // Layoutを行う関数です
     private func setLayout() {
         
@@ -196,21 +194,33 @@ class LoginViewController: BaseViewController {
         pwField.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: errorEmailLabel.frame.origin.y + errorEmailLabel.frame.height + SizeConst.LARGE_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TEXT_FIELD_HEIGHT)
         // ERROR用ラベル
         errorPasswordLabel.frame = CGRect(x: SizeConst.SIDE_MARGIN * 2, y: pwField.frame.origin.y + pwField.frame.height + SizeConst.SMALL_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: errorPasswordLabel.frame.height)
+        /*
         // パスワードリセット
         resetPWLink.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: errorPasswordLabel.frame.origin.y + errorPasswordLabel.frame.height + SizeConst.LARGE_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: resetPWLink.frame.height)
+        */
+        
+        // パスワードリセット
+        resetPWLink.frame = CGRect(x: getScreenWidth() - SizeConst.SIDE_MARGIN - resetPWLink.frame.width, y: errorPasswordLabel.frame.origin.y + errorPasswordLabel.frame.height + SizeConst.LARGE_MARGIN, width: resetPWLink.frame.width, height: resetPWLink.frame.height)
         
         // For Demo App
-        demoLink.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: resetPWLink.frame.origin.y + resetPWLink.frame.height + SizeConst.X_LARGE_MARGIN, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: demoLink.frame.height)
+        demoLink.frame = CGRect(x: getScreenWidth() - SizeConst.SIDE_MARGIN - demoLink.frame.width, y: resetPWLink.frame.origin.y + resetPWLink.frame.height + SizeConst.X_LARGE_MARGIN, width: demoLink.frame.width, height: demoLink.frame.height)
         
         let yPosition = getScreenHeight() - getSafeAreaBottom() - SizeConst.BOTTOM_MARGIN - SizeConst.BUTTON_HEIGHT - registerLink.frame.size.height - SizeConst.LARGE_MARGIN
         
         // ログインボタン
         loginButton.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: yPosition, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: SizeConst.BUTTON_HEIGHT)
+        /*
         // 新規会員登録リンク
         registerLink.frame = CGRect(x: 0, y: yPosition + SizeConst.BUTTON_HEIGHT + SizeConst.LARGE_MARGIN, width: getScreenWidth(), height: registerLink.frame.height)
+        */
+        
+        // 新規会員登録リンク
+        registerLink.frame = CGRect(x: (getScreenWidth() - SizeConst.SIDE_MARGIN * 2 - registerLink.frame.width) / 2 + SizeConst.SIDE_MARGIN, y: yPosition + SizeConst.BUTTON_HEIGHT + SizeConst.LARGE_MARGIN, width: registerLink.frame.width, height: registerLink.frame.height)
         
     }
     
+    
+    // MARK: - Event Function
     
     // loginButtonタップ時に実行される関数です
     @objc private func login () {
@@ -245,19 +255,17 @@ class LoginViewController: BaseViewController {
             let vc = RegisterViewController()
             navigationController?.pushViewController(vc, animated: true)
         }
-
         
     }
-    
-   
-    
-    
+
     // 画面をタップした際に実行される関数です
     @objc private func dismissKeyboard() {
         // キーボードを閉じます
         self.view.endEditing(true)
     }
     
+    
+    // MARK: - delegate
     
     // 画面タッチ時に実行される関数です
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -267,17 +275,17 @@ class LoginViewController: BaseViewController {
             // tagを取得します
             let tag = touch.view!.tag
             
-            if (tag == ClickTypeEnum.REGISTER_LINK.rawValue) {
+            if tag == ClickTypeEnum.REGISTER_LINK.rawValue {
                 // 登録リンククリック時
                 let vc = SignUpViewController()
                 navigationController?.pushViewController(vc, animated: true)
                 
-            } else if (tag == ClickTypeEnum.RESET_LINK.rawValue) {
+            } else if tag == ClickTypeEnum.RESET_LINK.rawValue {
                 // リセットリンククリック時
                 let vc = ResetPasswordViewController()
                 navigationController?.pushViewController(vc, animated: true)
                 
-            } else {
+            } else if tag == 100 {
                 
                 // For Demp App
                 let vc = HomeViewController()

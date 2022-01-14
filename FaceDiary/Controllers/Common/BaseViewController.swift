@@ -28,31 +28,27 @@ class BaseViewController: UIViewController {
         
         // ヘッダー箇所を透明に設定しません
         self.navigationController?.navigationBar.isTranslucent = false
-        // ナビゲーションバーの影を消します
-        self.navigationController?.navigationBar.shadowImage = UIImage()
         
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        if #available(iOS 11.0, *) {
-            // viewDidLayoutSubviewsではSafeAreaの取得ができている
+        // viewDidLayoutSubviewsではSafeAreaの取得ができている
+        
+        if showNav() {
+            safeAreaTop = navigationController?.view.safeAreaInsets.top
+            safeAreaBottom = navigationController?.view.safeAreaInsets.bottom
             
-            if showNav() {
-                safeAreaTop = navigationController?.view.safeAreaInsets.top
-                safeAreaBottom = navigationController?.view.safeAreaInsets.bottom
-                
-            } else {
-                safeAreaTop = view.safeAreaInsets.top
-                safeAreaBottom = view.safeAreaInsets.bottom
-            }
-           
-            navBarHeight = navigationController?.navigationBar.frame.size.height
-            screenHeight = UIScreen.main.bounds.height
-            screenWidth = UIScreen.main.bounds.width
-            
+        } else {
+            safeAreaTop = view.safeAreaInsets.top
+            safeAreaBottom = view.safeAreaInsets.bottom
         }
+       
+        navBarHeight = navigationController?.navigationBar.frame.size.height
+        screenHeight = UIScreen.main.bounds.height
+        screenWidth = UIScreen.main.bounds.width
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,36 +62,54 @@ class BaseViewController: UIViewController {
     // navigationの設定を行う関数です
     private func setUpNavBar() {
         
-        //　ナビゲーションバーの背景色
-        self.navigationController?.navigationBar.barTintColor = ColorConst.MAIN_COLOR
+        if #available(iOS 15.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.shadowColor = ColorConst.MAIN_COLOR
+            appearance.backgroundColor = ColorConst.MAIN_COLOR
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        } else {
+            navigationController?.navigationBar.barTintColor = ColorConst.MAIN_COLOR
+            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navigationController?.navigationBar.shadowImage = UIImage()
+            
+        }
+        
         // ナビゲーションバーのアイテムの色　（戻る　＜　とか　読み込みゲージとか）
         self.navigationController?.navigationBar.tintColor = .white
-        // ナビゲーションバーのテキストを変更する
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "戻る", style: .plain, target: nil, action: nil)
+        
+      
         if showNav() {
             // navigationを表示させる場合
             // ナビゲーションバーのタイトルを設定します
             navigationItem.title = setNavTitle()
             // ナビゲーションバーを表示します
             navigationController?.setNavigationBarHidden(false, animated: true)
+
+            
+            
+            if showBackButton() {
+                // 戻るボタンを表示させる場合
+                // ナビゲーションバーの戻るボタンを表示します
+                self.navigationItem.hidesBackButton = false
+                
+            } else {
+                // ナビゲーションバーの戻るボタンを非表示にします
+                self.navigationItem.hidesBackButton = true
+                
+            }
             
         } else {
             // ナビゲーションバーを表示しません
             navigationController?.setNavigationBarHidden(true, animated: true)
         }
         
-        if showBackButton() {
-            // 戻るボタンを表示させる場合
-            // ナビゲーションバーの戻るボタンを表示します
-            self.navigationItem.hidesBackButton = false
-            
-        } else {
-            // ナビゲーションバーの戻るボタンを非表示にします
-            self.navigationItem.hidesBackButton = true
-            
-        }
     }
+    
     
     // サブクラスで設定を行う関数です
     
@@ -114,6 +128,7 @@ class BaseViewController: UIViewController {
     // Emailのチェック用関数です
     func checkEmail(text: String?) -> Bool {
         
+        /*
         guard let email = text else {
             return false
         }
@@ -127,13 +142,17 @@ class BaseViewController: UIViewController {
         if NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email) {
             return true
         }
-        
+      
         return false
+        */
+        
+        return true
     }
     
     // Passwordのチェック用関数です
     func checkPassword(text: String?) -> Bool {
         
+        /*
         guard let password = text else {
             return false
         }
@@ -143,6 +162,9 @@ class BaseViewController: UIViewController {
         }
         
         return false
+        */
+        
+        return true
     }
     
     

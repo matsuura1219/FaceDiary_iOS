@@ -31,6 +31,9 @@ class SizeConst {
     static let TEXT_FIELD_HEIGHT: CGFloat = 50.0
     // UITextFieldのアイコンのサイズ
     static let ICON_SIZE: CGFloat = 30.0
+    
+    // Timelineの高さ
+    static let TIMELINE_HEIGHT: CGFloat = 150.0
    
     
     // UIButtonの高さ
@@ -48,13 +51,15 @@ class SizeConst {
     static let FAB_RADIUS: CGFloat = 60.0
     
     // cellの高さ
-    static let CELL_HEIGHT: CGFloat = 100.0
+    // static let CELL_HEIGHT: CGFloat = 100.0
     
     // sectionLabelの高さ
     static let SECTION_LABEL_HEIGHT: CGFloat = 30.0
     
     // sectionの高さ
     static let SECTION_HEIGHT: CGFloat = 50.0
+    
+    
     
     
 }

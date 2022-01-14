@@ -13,7 +13,7 @@ import UIKit
 
 class RegisterViewController: BaseViewController {
     
-    // view
+    // MARK: - view variables
     private lazy var titleLable: UILabel = {
         
         let label = UILabel()
@@ -52,23 +52,23 @@ class RegisterViewController: BaseViewController {
         
     }()
     
-    
+ 
+    // MARK: - Life Cycle
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 初期化を行います
         setUp()
         
     }
     
-
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // Laypoutの設定を行います
         setLayout()
         
     }
 
+    
+    // MARK: - override Function
     
     // ナビゲーションバーのタイトルに表示するテキストを設定する関数です
     override func setNavTitle () -> String {
@@ -85,6 +85,8 @@ class RegisterViewController: BaseViewController {
         return true
     }
     
+    
+    // MARK: - Function
     
     // 初期化を行う関数です
     private func setUp() {
@@ -125,6 +127,8 @@ class RegisterViewController: BaseViewController {
         
     }
     
+    
+    // MARK: - Event Function
     
     // ボタンクリック時に実行される関数です
     @objc private func pushButton(_ sender: UIButton) {

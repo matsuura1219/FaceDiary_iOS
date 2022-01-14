@@ -11,7 +11,8 @@ import UIKit
 
 class ResetPasswordViewController: BaseViewController {
     
-    // view
+    // MARK: - view variables
+    
     private lazy var titleLabel: UILabel = {
         
         let label = UILabel()
@@ -91,20 +92,22 @@ class ResetPasswordViewController: BaseViewController {
     }()
  
 
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 初期化を行います
         setUp()
 
     }
-  
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // Layoutの設定を行います
         setLayout()
         
     }
+    
+    
+    // MARK: - override Function
     
     // ナビゲーションバーのタイトルに表示するテキストを設定する関数です
     override func setNavTitle () -> String {
@@ -121,6 +124,8 @@ class ResetPasswordViewController: BaseViewController {
         return true
     }
     
+    
+    // MARK: - Function
     
     // 初期化を行う関数です
     private func setUp() {
@@ -143,8 +148,8 @@ class ResetPasswordViewController: BaseViewController {
         let tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGR.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGR)
+        
     }
-
     
     // Layoutの設定を行う関数です
     private func setLayout() {
@@ -172,6 +177,8 @@ class ResetPasswordViewController: BaseViewController {
         resetButton.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: yPosition, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: SizeConst.BUTTON_HEIGHT)
     }
     
+    
+    // MARK: - Event Function
     
     // 画面をタップした際に実行される関数です
     @objc private func dismissKeyboard() {

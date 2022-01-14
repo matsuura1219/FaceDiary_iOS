@@ -13,12 +13,18 @@ import UIKit
 
 class CalendarViewController: BaseViewController {
     
+    // MARK: - constants
+    
     // 1週間の日数
     private let DAY_OF_WEEK: Int = 7
     // 1ヶ月の最大週数
     private let MAX_WEEK: Int = 6
     // 曜日ラベル
     private let DAY_OF_WEEK_LABEL = ["日", "月", "火", "水", "木", "金", "土"]
+    
+    
+    // MARK: - variables
+    
     // カレンダーに表示する年
     private var year: Int = 0
     // カレンダーに表示する月
@@ -27,7 +33,8 @@ class CalendarViewController: BaseViewController {
     private var dialogView: DialogView?
     
     
-    // view
+    // MARK: - view variables
+    
     private lazy var collectionView: UICollectionView = {
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -58,19 +65,23 @@ class CalendarViewController: BaseViewController {
         
     }()
     
+    
+    // MARK: - LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 初期化を行います
         setUp()
         
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // Layoutの設定を行います
         setLayout()
     }
+    
+   
+    
+    // MARK: - override Function
     
     // ナビゲーションバーのタイトルに表示するテキストを設定する関数です
     override func setNavTitle () -> String {
@@ -86,6 +97,9 @@ class CalendarViewController: BaseViewController {
     override func showBackButton() -> Bool {
         return false
     }
+    
+    
+    // MARK: - Function
     
     // 初期化を行う関数です
     private func setUp() {
@@ -104,10 +118,9 @@ class CalendarViewController: BaseViewController {
         collectionView.dataSource = self
         
         // HomeViewControllerから通知を受け取る
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadCollectionView(notification:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadCollectionView(notification:)), name: .releadCell, object: nil)
         
     }
-    
     
     // Layoutを行う関数です
     private func setLayout() {
@@ -124,7 +137,6 @@ class CalendarViewController: BaseViewController {
         fab.frame = CGRect(x: left, y: top, width: SizeConst.FAB_RADIUS, height: SizeConst.FAB_RADIUS)
         
     }
-    
     
     // グローバル変数の年と月を更新します
     private func updateYearAndMonth(status: String?) {
@@ -159,10 +171,11 @@ class CalendarViewController: BaseViewController {
         
     }
     
+    
+    // MARK: - Event Function
+    
     // FAB押下時に実行される関数です
     @objc private func pushFAB() {
-        
-        print("FABクリックしました！")
         
         dialogView = DialogView(frame: CGRect(x: 0, y: 0, width: getScreenWidth(), height: getScreenHeight()), message: TextConst.G0100_REGISTER_POPUP, yes: TextConst.YES, no: TextConst.NO, delegate: self)
         
@@ -172,6 +185,7 @@ class CalendarViewController: BaseViewController {
         
         // ポップアップ画面を表示します
         UIApplication.shared.connectedScenes.filter({$0.activationState == .foregroundActive}).map({$0 as? UIWindowScene}).compactMap({$0}).first?.windows.filter({$0.isKeyWindow}).first?.addSubview(dialog)
+        
         
     }
     
@@ -190,6 +204,8 @@ class CalendarViewController: BaseViewController {
 
 extension CalendarViewController: ButtonTapped {
     
+    // MARK: - delegate
+    
     // ポップアップ画面のボタンクリック時
     func tappedButton(type: ClickTypeEnum) {
         
@@ -200,6 +216,9 @@ extension CalendarViewController: ButtonTapped {
         
         case .YES_BUTTON:
             print("YES!!")
+            
+            // CalendarViewControllerへ通知を送る
+            NotificationCenter.default.post(name: .registerFeelingName, object: nil)
             
         case .NO_BUTTON:
             print("NO!!!")
@@ -214,6 +233,8 @@ extension CalendarViewController: ButtonTapped {
 }
 
 extension CalendarViewController: UICollectionViewDelegate {
+    
+    // MARK: - delegate
     
     //Cellがクリックされた時によばれます
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -230,6 +251,10 @@ extension CalendarViewController: UICollectionViewDelegate {
                 let tappedDay = indexPath.row - youbi + 1
                 print(tappedDay)
                 
+                let vc = DetailViewController()
+                vc.modalPresentationStyle = .automatic
+                navigationController?.present(vc, animated: true, completion: nil)
+                
             }
             
         }
@@ -238,6 +263,8 @@ extension CalendarViewController: UICollectionViewDelegate {
 
 
 extension CalendarViewController: UICollectionViewDataSource {
+    
+    // MARK: - delegate
     
     // セクションの数(０：曜日ラベル、１：日付)
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -311,8 +338,9 @@ extension CalendarViewController: UICollectionViewDataSource {
 }
 
 
-extension CalendarViewController: UICollectionViewDelegateFlowLayout {
-    
+extension CalendarViewController: UICollectionViewDelegateFlowLayout {    
+
+    // MARK: - delegate
     // cellのサイズを設定します
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //ここでは画面の横サイズの半分の大きさのcellサイズを指定

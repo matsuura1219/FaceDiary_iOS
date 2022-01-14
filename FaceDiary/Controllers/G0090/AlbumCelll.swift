@@ -8,8 +8,9 @@
 import UIKit
 
 class AlbumCell: UICollectionViewCell {
+
+    // MARK: - view variables
     
-    // view
     private let imgView: UIImageView = {
         
         let imgView = UIImageView()
@@ -19,22 +20,23 @@ class AlbumCell: UICollectionViewCell {
         
     }()
     
+    
+    // MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        // cellの設定を行います
         setCell()
     }
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     
+    // MARK: - Function
+    
     // cellの設定を行う関数です
     private func setCell() {
-        
         contentView.addSubview(imgView)
         
     }

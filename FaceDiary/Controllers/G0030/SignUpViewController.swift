@@ -11,6 +11,9 @@ import UIKit
  
 class SignUpViewController: BaseViewController {
     
+    
+    // MARK: - view variables
+    
     private lazy var titleLabel: UILabel = {
         
         let label = UILabel()
@@ -89,20 +92,22 @@ class SignUpViewController: BaseViewController {
         
     }()
    
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 初期化を行います
         setUp()
        
     }
     
-    // viewのレイアウトを行う関数です
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // Layoutの設定を行います
         setLayout()
         
     }
+    
+    // MARK: - override Function
     
     // ナビゲーションバーのタイトルに表示するテキストを設定する関数です
     override func setNavTitle () -> String {
@@ -119,6 +124,8 @@ class SignUpViewController: BaseViewController {
         return true
     }
     
+    
+    // MARK: - Function
     
     // 初期化を行う関数です
     private func setUp() {
@@ -137,7 +144,6 @@ class SignUpViewController: BaseViewController {
         errorPasswordLabel.isHidden = true
         errorRePasswordLabel.isHidden = true
     
-        
         let tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGR.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGR)
@@ -149,7 +155,6 @@ class SignUpViewController: BaseViewController {
         
         let top = getScreenHeight() * 0.15 - getNavBarHeight() - getSafeAreaTop()
         
-      
         // タイトル
         titleLabel.frame = CGRect(x: 0, y: top, width: getScreenWidth(), height: titleLabel.frame.height)
         // メールアドレス入力
@@ -170,6 +175,8 @@ class SignUpViewController: BaseViewController {
         // ログインボタン
         registerButton.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: yPosition, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: SizeConst.BUTTON_HEIGHT)
     }
+    
+    // MARK: - Event Function
 
     // 画面をタップした際に実行される関数です
     @objc private func dismissKeyboard() {

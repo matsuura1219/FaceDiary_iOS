@@ -8,10 +8,11 @@
 import UIKit
 
 // 感情入力画面を表示するためのViewControllerです
- 
+
 class SelectFeelingViewController: BaseViewController {
     
-    // view
+    // MARK: - view variables
+    
     private lazy var titleLabel: UILabel = {
         
         let label = UILabel()
@@ -26,7 +27,7 @@ class SelectFeelingViewController: BaseViewController {
     }()
     
     private var itemLabel1: UILabel = {
-    
+        
         let label = UILabel()
         label.textColor = ColorConst.WHITE
         label.font = FontSizeConst.LARGE_SIZE
@@ -39,7 +40,7 @@ class SelectFeelingViewController: BaseViewController {
     }()
     
     private var itemLabel2: UILabel = {
-    
+        
         let label = UILabel()
         label.textColor = ColorConst.WHITE
         label.font = FontSizeConst.LARGE_SIZE
@@ -52,7 +53,7 @@ class SelectFeelingViewController: BaseViewController {
     }()
     
     private var itemLabel3: UILabel = {
-    
+        
         let label = UILabel()
         label.textColor = ColorConst.WHITE
         label.font = FontSizeConst.LARGE_SIZE
@@ -65,7 +66,7 @@ class SelectFeelingViewController: BaseViewController {
     }()
     
     private var itemLabel4: UILabel = {
-    
+        
         let label = UILabel()
         label.textColor = ColorConst.WHITE
         label.font = FontSizeConst.LARGE_SIZE
@@ -142,14 +143,16 @@ class SelectFeelingViewController: BaseViewController {
         return button
         
     }()
-
-    // チェックされている状態
+    
+    // MARK: - variables
+    
+    // チェック状態
     private var checkStatus: FeelingTypeEnum = .NONCHECKED
     
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 初期化を行います
         setUp()
         
     }
@@ -157,11 +160,12 @@ class SelectFeelingViewController: BaseViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // Layoutの設定を行います
         setLayout()
         
     }
     
+    
+    // MARK: - override Function
     
     // ナビゲーションバーのタイトルに表示するテキストを設定する関数です
     override func setNavTitle () -> String {
@@ -177,6 +181,9 @@ class SelectFeelingViewController: BaseViewController {
     override func showBackButton() -> Bool {
         return true
     }
+    
+    
+    // MARK: - Function
     
     // 初期化を行う関数です
     private func setUp() {
@@ -194,6 +201,7 @@ class SelectFeelingViewController: BaseViewController {
         view.addSubview(itemLabel4)
         view.addSubview(confirmButton)
         
+       
     }
     
     // Layoutを行う関数です
@@ -224,56 +232,6 @@ class SelectFeelingViewController: BaseViewController {
         confirmButton.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: yPosition, width: getScreenWidth() - SizeConst.SIDE_MARGIN * 2, height: SizeConst.BUTTON_HEIGHT)
     }
     
-    
-    // 確定ボタン押下後に実行される関数です
-    @objc private func pushConfirmButton() {
-        
-        let vc = HomeViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    // チェックボックス押下時に実行される関数です
-    @objc private func pushCheckBox (_ sender: UIButton) {
-        
-        if checkStatus == .NONCHECKED {
-            // チェックボックスにチェックが付いていない場合
-            // 活性状態にします
-            confirmButton.isEnabled = true
-            // 透明を解除します
-            confirmButton.layer.opacity = 1.0
-        }
-        
-        switch sender.tag {
-        
-        case FeelingTypeEnum.CHECK1.rawValue:
-            
-            changeTextColor(type: .CHECK1)
-            changeCheckMark(type: .CHECK1)
-            break
-            
-        case FeelingTypeEnum.CHECK2.rawValue:
-            
-            changeTextColor(type: .CHECK2)
-            changeCheckMark(type: .CHECK2)
-            break
-            
-        case FeelingTypeEnum.CHECK3.rawValue:
-            
-            changeTextColor(type: .CHECK3)
-            changeCheckMark(type: .CHECK3)
-            break
-            
-        case FeelingTypeEnum.CHECK4.rawValue:
-            
-            changeTextColor(type: .CHECK4)
-            changeCheckMark(type: .CHECK4)
-            break
-            
-        default:
-        
-            break
-        }
-    }
     
     private func changeCheckMark (type: FeelingTypeEnum) {
         
@@ -337,33 +295,33 @@ class SelectFeelingViewController: BaseViewController {
         itemLabel4.textColor = ColorConst.WHITE_ALPHA
         
         /*
-        switch checkStatus {
-        
-        case .CHECK1:
-            itemLabel1.textColor = ColorConst.WHITE_ALPHA
-            break
-            
-        case .CHECK2:
-            itemLabel2.textColor = ColorConst.WHITE_ALPHA
-            break
-            
-        case .CHECK3:
-            itemLabel3.textColor = ColorConst.WHITE_ALPHA
-            break
-            
-        case .CHECK4:
-            itemLabel4.textColor = ColorConst.WHITE_ALPHA
-            break
-            
-        case .NONCHECKED:
-            itemLabel1.textColor = ColorConst.WHITE_ALPHA
-            itemLabel2.textColor = ColorConst.WHITE_ALPHA
-            itemLabel3.textColor = ColorConst.WHITE_ALPHA
-            itemLabel4.textColor = ColorConst.WHITE_ALPHA
-            break
-        
-        }
-        */
+         switch checkStatus {
+         
+         case .CHECK1:
+         itemLabel1.textColor = ColorConst.WHITE_ALPHA
+         break
+         
+         case .CHECK2:
+         itemLabel2.textColor = ColorConst.WHITE_ALPHA
+         break
+         
+         case .CHECK3:
+         itemLabel3.textColor = ColorConst.WHITE_ALPHA
+         break
+         
+         case .CHECK4:
+         itemLabel4.textColor = ColorConst.WHITE_ALPHA
+         break
+         
+         case .NONCHECKED:
+         itemLabel1.textColor = ColorConst.WHITE_ALPHA
+         itemLabel2.textColor = ColorConst.WHITE_ALPHA
+         itemLabel3.textColor = ColorConst.WHITE_ALPHA
+         itemLabel4.textColor = ColorConst.WHITE_ALPHA
+         break
+         
+         }
+         */
         
         switch type {
         
@@ -415,6 +373,60 @@ class SelectFeelingViewController: BaseViewController {
             
         }
     }
-
-
+    
+    
+    
+    // MARK: - Event Function
+    
+    // 確定ボタン押下後に実行される関数です
+    @objc private func pushConfirmButton() {
+        
+        let vc = HomeViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // チェックボックス押下時に実行される関数です
+    @objc private func pushCheckBox (_ sender: UIButton) {
+        
+        if checkStatus == .NONCHECKED {
+            // チェックボックスにチェックが付いていない場合
+            // 活性状態にします
+            confirmButton.isEnabled = true
+            // 透明を解除します
+            confirmButton.layer.opacity = 1.0
+        }
+        
+        switch sender.tag {
+        
+        case FeelingTypeEnum.CHECK1.rawValue:
+            
+            changeTextColor(type: .CHECK1)
+            changeCheckMark(type: .CHECK1)
+            break
+            
+        case FeelingTypeEnum.CHECK2.rawValue:
+            
+            changeTextColor(type: .CHECK2)
+            changeCheckMark(type: .CHECK2)
+            break
+            
+        case FeelingTypeEnum.CHECK3.rawValue:
+            
+            changeTextColor(type: .CHECK3)
+            changeCheckMark(type: .CHECK3)
+            break
+            
+        case FeelingTypeEnum.CHECK4.rawValue:
+            
+            changeTextColor(type: .CHECK4)
+            changeCheckMark(type: .CHECK4)
+            break
+            
+        default:
+            
+            break
+        }
+    }
+    
+    
 }

@@ -9,7 +9,8 @@ import UIKit
 
 class TimelineCell: UITableViewCell {
     
-    // 背景色
+    // MARK: - view variables
+    
     private let backView: UIView = {
        
         let view = UIView()
@@ -21,7 +22,6 @@ class TimelineCell: UITableViewCell {
         
     }()
     
-    // 曜日
     private lazy var youbiLabel: UILabel = {
         
         let text = UILabel()
@@ -33,7 +33,6 @@ class TimelineCell: UITableViewCell {
         return text
     }()
     
-    // 日付
     private lazy var dayLabel: UILabel = {
        
         let text = UILabel()
@@ -46,7 +45,6 @@ class TimelineCell: UITableViewCell {
         
     }()
     
-    // 時間
     private lazy var timeLabel: UILabel = {
        
         let text = UILabel()
@@ -59,19 +57,18 @@ class TimelineCell: UITableViewCell {
         
     }()
     
-    // 感情ラベル
     private lazy var thinkLabel: UILabel = {
        
         let text = UILabel()
         text.text = "充実度"
         text.textColor = ColorConst.SUB_TEXT_COLOR
         text.textAlignment = .center
+        text.font = FontSizeConst.MIDDLE_SIZE
         sizeToFit()
         return text
         
     }()
     
-    // 感情レベル
     private lazy var thinkLevel: UILabel = {
         
         let text = UILabel()
@@ -79,25 +76,25 @@ class TimelineCell: UITableViewCell {
         text.textColor = ColorConst.SUB_TEXT_COLOR
         text.textAlignment = .center
         text.layer.borderColor = ColorConst.BLACK.cgColor
+        text.font = FontSizeConst.X_LARGE_SIZE
         text.backgroundColor = ColorConst.WHITE
-        text.layer.borderWidth = 3.0
+        text.layer.borderWidth = 2.0
         sizeToFit()
         return text
         
     }()
     
-    // 顔画像ラベル
     private lazy var imgLabel: UILabel = {
        
         let text = UILabel()
         text.text = "顔画像"
         text.textColor = ColorConst.SUB_TEXT_COLOR
+        text.font = FontSizeConst.MIDDLE_SIZE
         text.textAlignment = .center
         return text
         
     }()
     
-    // 顔画像
     private lazy var imgView: UIImageView = {
        
         let image = UIImage(named: "user")
@@ -109,6 +106,8 @@ class TimelineCell: UITableViewCell {
         
     }()
     
+    
+    // MARK: - Life Cycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -131,15 +130,17 @@ class TimelineCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        // frameの設定を行います
-        backView.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: 0, width: frame.width - SizeConst.SIDE_MARGIN * 2, height: 150)
-        youbiLabel.frame = CGRect(x: 0, y: 0, width: backView.frame.width * 0.2, height: 50)
-        dayLabel.frame = CGRect(x: 0, y: 50 , width: backView.frame.width * 0.2, height: 50)
-        timeLabel.frame = CGRect(x: 0, y: 100, width: backView.frame.width * 0.2, height: 50)
-        thinkLabel.frame = CGRect(x: backView.frame.width * 0.3, y: 0, width: backView.frame.width * 0.35, height: 50)
-        thinkLevel.frame = CGRect(x: backView.frame.width * 0.35, y: 50, width: backView.frame.width * 0.25, height: 80)
-        imgLabel.frame = CGRect(x: backView.frame.width * 0.65, y: 0, width: backView.frame.width * 0.35, height: 50)
-        imgView.frame = CGRect(x: backView.frame.width * 0.7, y: 50, width: backView.frame.width * 0.25, height: 80)
+        backView.frame = CGRect(x: SizeConst.SIDE_MARGIN, y: 0, width: frame.width - SizeConst.SIDE_MARGIN * 2, height: SizeConst.TIMELINE_HEIGHT)
+        
+        youbiLabel.frame = CGRect(x: 0, y: 0, width: backView.frame.width * 0.2, height: SizeConst.TIMELINE_HEIGHT / 3)
+        dayLabel.frame = CGRect(x: 0, y: youbiLabel.frame.origin.y + youbiLabel.frame.height , width: backView.frame.width * 0.2, height: SizeConst.TIMELINE_HEIGHT / 3)
+        timeLabel.frame = CGRect(x: 0, y: dayLabel.frame.origin.y + dayLabel.frame.height, width: backView.frame.width * 0.2, height: SizeConst.TIMELINE_HEIGHT / 3)
+        
+        thinkLabel.frame = CGRect(x: backView.frame.width * 0.3, y: 0, width: backView.frame.width * 0.35, height: SizeConst.TIMELINE_HEIGHT / 3)
+        thinkLevel.frame = CGRect(x: backView.frame.width * 0.35, y: thinkLabel.frame.origin.y + thinkLabel.frame.height, width: backView.frame.width * 0.25, height: 80)
+        
+        imgLabel.frame = CGRect(x: backView.frame.width * 0.65, y: 0, width: backView.frame.width * 0.35, height: SizeConst.TIMELINE_HEIGHT / 3)
+        imgView.frame = CGRect(x: backView.frame.width * 0.7, y: imgLabel.frame.origin.y + imgLabel.frame.height, width: backView.frame.width * 0.25, height: 80)
 
     }
     

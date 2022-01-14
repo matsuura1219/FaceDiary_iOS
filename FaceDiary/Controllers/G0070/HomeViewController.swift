@@ -7,33 +7,52 @@
 
 import UIKit
 
-// ホーム画面を表示するためのViewControllerです
- 
+/**
+ ホーム画面を表示するためのViewControllerです
+ */
+
+
 class HomeViewController: UITabBarController {
     
+    // MARK: - variables
     // 日付変数
     var date: String = ""
-   
+    
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 初期化を行います
         setUp()
-    
+        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // ナビゲーションバーの設定をします
         customizeNavColor()
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(moveToRegisterFeelingView), name: .registerFeelingName, object: nil)
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: .registerFeelingName, object: nil)
+        
+    }
+    
+    
+    // MARK: - Function
+    
     // 初期化を行う関数です
     private func setUp() {
-        
-        self.view.backgroundColor = ColorConst.WHITE
+
         self.navigationItem.hidesBackButton = true
         
         // delegate
@@ -46,8 +65,12 @@ class HomeViewController: UITabBarController {
         date = DateManager.getCurrentDate()
         navigationItem.title = date
         
+        // FAB押下後の戻るボタンのタイトル設定
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "戻る", style: .plain, target: nil, action: nil)
+        
+        
     }
-
+    
     
     // ナビゲーションバーのカラーをカスタマイズする関数です
     private func customizeNavColor () {
@@ -69,18 +92,27 @@ class HomeViewController: UITabBarController {
             action: #selector(actionBack)
         )
         
+       
         // ヘッダー箇所を透明に設定しない
         self.navigationController?.navigationBar.isTranslucent = false
         // ナビゲーションバーの影を消す
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
+        if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = ColorConst.MAIN_COLOR
+            UITabBar.appearance().standardAppearance = appearance
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+            
+        } else {
+            tabBar.barTintColor = ColorConst.MAIN_COLOR
+        }
+        
         // 選択したタブの色を設定します
         UITabBar.appearance().tintColor = ColorConst.SECONDARY_COLOR
-        
         //　ナビゲーションバーの背景色
         self.navigationController?.navigationBar.barTintColor = ColorConst.MAIN_COLOR
-        //　フッターの背景色
-        tabBar.barTintColor = ColorConst.MAIN_COLOR
         // 透明に設定しない
         tabBar.isTranslucent = false
         
@@ -91,9 +123,8 @@ class HomeViewController: UITabBarController {
             // 文字の色
             .foregroundColor: UIColor.white
         ]
-        
+ 
     }
-    
     
     // タブの設定を行う関数です
     private func setTabBar () {
@@ -117,7 +148,7 @@ class HomeViewController: UITabBarController {
         var title: String = ""
         
         switch type {
-        
+            
         case .TIMELINE:
             // タイムラインタブの場合
             title = TextConst.G0080_TITLE
@@ -140,7 +171,7 @@ class HomeViewController: UITabBarController {
         
     }
     
-
+    
     // コンテンツに応じて、ヘッダー上のボタンを表示させるかどうか決定する関数です
     private func showNavItem (type: ContentTypeEnum) {
         
@@ -175,14 +206,24 @@ class HomeViewController: UITabBarController {
     }
     
     
+    // MARK: - Event Function
+    
+    @objc private func moveToRegisterFeelingView() {
+        print("CalendarViewから通知を受け取りました")
+        
+        let vc = SelectFeelingViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     // 次へボタン押下時に実行される関数です
     @objc private func actionNext() {
         
         date = DateManager.getNextDate(date: date)
         self.navigationItem.title = date
         
-        // CalendarViewControllerへ通知を送る
-        NotificationCenter.default.post(name: NSNotification.Name("reload"), object: nil, userInfo: ["status": "next"])
+        // HomeViewControllerへ通知を送る
+        NotificationCenter.default.post(name: .releadCell, object: nil, userInfo: ["status": "next"])
     }
     
     
@@ -193,7 +234,7 @@ class HomeViewController: UITabBarController {
         self.navigationItem.title = date
         
         // CalendarViewControllerへ通知を送る
-        NotificationCenter.default.post(name: NSNotification.Name("reload"), object: nil, userInfo: ["status": "back"])
+        NotificationCenter.default.post(name: .releadCell, object: nil, userInfo: ["status": "back"])
         
     }
     
@@ -202,6 +243,8 @@ class HomeViewController: UITabBarController {
 
 
 extension HomeViewController: UITabBarControllerDelegate {
+    
+    // MARK: - delegate
     
     // タブをクリックしたときに実行される関数です
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
@@ -230,5 +273,5 @@ extension HomeViewController: UITabBarControllerDelegate {
         }
         
     }
-   
+    
 }

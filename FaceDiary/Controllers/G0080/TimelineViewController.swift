@@ -9,7 +9,8 @@ import UIKit
 
 class TimelineViewController: BaseViewController {
     
-    // view
+    // MARK: - view variables
+    
     private lazy var tableView: UITableView = {
         
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -20,18 +21,22 @@ class TimelineViewController: BaseViewController {
         return tableView
         
     }()
+
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 初期化を行います
         setUp()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // Layoutの設定を行います
         setLayout()
     }
+    
+    
+    // MARK: - override Function
     
     // ナビゲーションバーのタイトルに表示するテキストを設定する関数です
     override func setNavTitle () -> String {
@@ -48,10 +53,15 @@ class TimelineViewController: BaseViewController {
         return false
     }
     
+    
+    // MARK: - Function
+    
     // 初期化を行う関数です
     private func setUp() {
-
+        
+        
         view.addSubview(tableView)
+        view.backgroundColor = ColorConst.WHITE
         
         // delegate
         tableView.delegate = self
@@ -60,23 +70,26 @@ class TimelineViewController: BaseViewController {
         // セルの登録をします
         tableView.register(TimelineCell.self, forCellReuseIdentifier: "TimelineCell")
         
+        
     }
     
     // Layoutの設定を行う関数です
     private func setLayout() {
         
+        
         let tabBarHeight = tabBarController?.tabBar.frame.size.height ?? 0
         tableView.frame = CGRect(x: 0, y: 0, width: getScreenWidth(), height: getScreenHeight() - getSafeAreaTop() - getNavBarHeight() - tabBarHeight)
         
+        
+        
     }
-    
-    
 }
 
 extension TimelineViewController: UITableViewDataSource {
     
+    // MARK: - delegate
+    
     // 1section内のセルの合計値を設定します
-     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
@@ -95,7 +108,8 @@ extension TimelineViewController: UITableViewDataSource {
     
     // cellの高さを設定します
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return SizeConst.CELL_HEIGHT
+        return SizeConst.TIMELINE_HEIGHT + SizeConst.LARGE_MARGIN
+        // return SizeConst.TIMELINE_HEIGHT
     }
     
     // Sectionのカスタマイズを行います
@@ -104,27 +118,38 @@ extension TimelineViewController: UITableViewDataSource {
         let headerView = UIView()
         let label = UILabel()
         label.text = "   2021 / 12"
-        label.frame = CGRect(x: 0, y: SizeConst.MIDDIUM_MARGIN, width: tableView.frame.width, height: SizeConst.SECTION_LABEL_HEIGHT)
+        label.frame = CGRect(x: 0, y: SizeConst.LARGE_MARGIN, width: tableView.frame.width, height: SizeConst.SECTION_LABEL_HEIGHT)
+        // label.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: SizeConst.SECTION_LABEL_HEIGHT)
         label.textColor = ColorConst.SUB_TEXT_COLOR
-        headerView.backgroundColor = .clear
         label.backgroundColor = ColorConst.SUB_COLOR
         headerView.addSubview(label)
         return headerView
     }
     
+    
     // sectionの高さを設定します
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return SizeConst.SECTION_HEIGHT + SizeConst.MIDDIUM_MARGIN * 2
+        return SizeConst.SECTION_LABEL_HEIGHT + SizeConst.LARGE_MARGIN * 2
+        // return SizeConst.SECTION_LABEL_HEIGHT
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNonzeroMagnitude
+    }
+    
+
 }
+
+
 
 
 extension TimelineViewController: UITableViewDelegate {
     
+    // MARK: - delegate
+    
     // スクロール時に、sectionを固定しないように設定する
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let sectionHeaderHeight: CGFloat  = 40;
+        let sectionHeaderHeight: CGFloat = 74;
         if (scrollView.contentOffset.y <= sectionHeaderHeight && scrollView.contentOffset.y >= 0) {
             scrollView.contentInset = UIEdgeInsets(top: -scrollView.contentOffset.y, left: 0, bottom: 0, right: 0);
         } else if (scrollView.contentOffset.y >= sectionHeaderHeight) {
@@ -133,3 +158,4 @@ extension TimelineViewController: UITableViewDelegate {
     }
     
 }
+
